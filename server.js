@@ -13,7 +13,7 @@ var db = require('./config/db');
 var port = process.env.PORT || 3000;
 
 // connect to mongoDB database
-// (uncomment after entering in credentials in config/db.js)
+// TODO:uncomment after entering in credentials in config/db.js
 // mongoose.connect(db.url); 
 
 // get all data/stuff of the body (POST) parameters

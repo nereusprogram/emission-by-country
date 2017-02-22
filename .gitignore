@@ -41,3 +41,6 @@ jspm_packages
 
 #WebStorm generates html renderings of pug files
 public/views/index.html
+
+#bower libraries
+public/libs
