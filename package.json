@@ -1,0 +1,10 @@
+{
+  "name": "emission-by-country",
+  "main": "server.js",
+  "dependencies": {
+    "express" : "^4.14.1",
+    "mongoose" : "^4.8.1",
+    "body-parser" : "^1.16.1",
+    "method-override" : "^2.3.7"
+  }
+}
