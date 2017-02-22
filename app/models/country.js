@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 /*TODO: uncomment after figuring out how to run local
  *      database of mongoDB with name countrys
  *      ---from mongoosejs.com docs
- * mongoose.connect('mongodb://localhost/countrys');
+ * mongoose.connect('mongodb://localhost/countrys'); //delete this line, it's done in server.js
  * var db = mongoose.connection;
  * db.on('error', console.error.bind(console, 'connection error: '));
  * db.once('open', function () {

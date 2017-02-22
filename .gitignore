@@ -38,3 +38,6 @@ jspm_packages
 
 #WebStorm IDE settings
 .idea
+
+#WebStorm generates html renderings of pug files
+public/views/index.html
