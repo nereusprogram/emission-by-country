@@ -12,9 +12,7 @@ var db = require('./config/db');
 // set our port
 var port = process.env.PORT || 3000;
 
-// connect to mongoDB database
-// TODO:uncomment after entering in credentials in config/db.js
-// mongoose.connect(db.url); 
+// TODO: connect to mysql database
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
@@ -29,7 +27,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
-// set the static files location /public/img will be /img for users
+// set the static files location
+/* express.static returns middleware that serves
+ * filesystem path "__dirname + '/public'" when web path '/'
+ * is requested
+ * equivalent to app.use('/', function(req, res) {//get file from /public})
+ */
 app.use(express.static(__dirname + '/public'));
 
 //set /public/views to app root dir

@@ -1,3 +1,6 @@
+/*TODO: really understand how the callback is structured here,
+ * this is not standard according to documentation.
+ */
 angular.module('CountryService', []).factory('Country', ['$http', function($http) {
   return {
     // call to get all countrys
