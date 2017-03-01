@@ -3,6 +3,7 @@ html(lang='en')
     head
         title= pageTitle
         meta(name='viewport', content='width=device-width, initial-scale=1')
+
         //jQuery for bootstrap
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
 
@@ -11,5 +12,16 @@ html(lang='en')
         link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', crossorigin='anonymous')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
 
-    body
+        //load angular
+        script(src='libs/angular/angular.js')
+        script(src='libs/angular-route/angular-route.js')
+
+        //load custom angular components
+        script(src='js/app.js')
+        script(src='js/angularRoutes.js')
+        script(src='js/services/CountryService.js')
+        script(src='js/controllers/mainController.js')
+
+    body(ng-app='emissionByCountry', ng-controller='MainController')
         h1.text-center Emission By Country
+        p {{ tagline }}
