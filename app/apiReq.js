@@ -1,6 +1,7 @@
+// handles querying to mySQL server, given a valid queryString
+
 module.exports = {
 
-  // handles querying to mySQL server, given a valid queryString
   handleCountryRequest: function (pool, queryString, callback){
 
     // grab connection from pool
@@ -33,7 +34,7 @@ module.exports = {
         console.log('Results from query from apiReq: ');
         console.log(results);
 
-        // pass back results of query
+        // call callback with results of query
         return callback(results);
       });
     });

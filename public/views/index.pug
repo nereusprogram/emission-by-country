@@ -25,3 +25,9 @@ html(lang='en')
     body(ng-app='emissionByCountry', ng-controller='MainController')
         h1.text-center Emission By Country
         p {{ tagline }}
+        p {{ firstQueryData }}
+        div.dropdown
+            button.btn.btn-secondary.dropdown-toggle(type='button', id='dropdownMenuButton', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') regions
+            div.dropdown-menu(aria-labelledby='dropdownMenuButton')
+                a(ng-repeat='region in regions')
+        select(ng-model='regionNames', ng-options='region for region in regions')

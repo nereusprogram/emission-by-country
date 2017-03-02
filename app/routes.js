@@ -3,17 +3,13 @@ var apiReq = require('./apiReq');
 
 module.exports = function(app, pool){
 
-  // recieve http req to get country data, respond by fetching data
+  // receive http req to get country data, respond by fetching data
   // from mySQL server
   app.get('/api/countrys', function (req, res){
     console.log('backend route for /api/countrys has been called');
 
-    // TODO: make it so that the user selects the region and that
-    //       region gets passed in from http request from angular
-    var region = 'Asia';
-
     // construct mySQL query
-    var queryString = 'SELECT * FROM emission_by_country_table WHERE region = "'.concat(region).concat('"');
+    var queryString = 'SELECT * FROM emission_by_country_table';
 
     // callback to execute after query to database has finished
     var respondToRequest = function (queryResults) {
