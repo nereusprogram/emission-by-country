@@ -2,9 +2,12 @@
   "name": "emission-by-country",
   "version": "1.0.0",
   "dependencies": {
-    "font-awesome": "latest",
     "animate.css": "latest",
     "angular": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "angular-animate": "^1.6.3"
+  },
+  "resolutions": {
+    "angular": "1.6.3"
   }
 }

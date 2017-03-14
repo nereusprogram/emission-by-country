@@ -11,7 +11,7 @@ module.exports = function (app, pool){
     console.log('connected to mySQL database with id: ' + connection.threadId);
 
     // test query database, expected output to be 3 records
-    connection.query('SELECT * FROM emission_by_country_table WHERE emissions > 40000',
+    connection.query('SELECT * FROM emission_by_country_tbl WHERE emissions > 40000',
       //fields is information about each column of the database
       function (err, results, fields) {
         /* release connection back into the pool, requested data has been delivered

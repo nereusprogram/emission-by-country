@@ -1,23 +1,34 @@
-/*TODO: really understand how the callback is structured here,
- * this is not standard according to documentation.
- */
-angular.module('CountryService', []).factory('Country', ['$http', function($http) {
-  return {
-    // call to get all countrys
+angular
+  .module('emissionByCountry')
+  .factory('CountryService', ['$http', countryAPIReq]);
+
+function countryAPIReq($http) {
+  var CountryService = {
+
+    //call to get all countries
     get : function() {
-      return $http.get('/api/countrys');
-    },
+      var promise = $http({
+        method: 'GET',
+        url: '/api/countries'
+      }).then(
+        function onSuccess(res){
 
-    // these will work when more API routes are defined on the Node side of things
-    // call to POST and create a new country
-    create : function(countryData) {
-      return $http.post('/api/countrys', countryData);
-    },
+          // browser console output
+          console.log('http get request to /api/countries successful');
+          console.log('Server responded with: ');
+          console.log(res);
 
-    // call to DELETE a country
-    delete : function(id) {
-      return $http.delete('/api/countrys/' + id);
+          return res.data;
+
+        }, function onError(res) {
+          console.log('Error with http request to /api/countries');
+          console.log(res);
+        }
+      );
+
+      return promise;
     }
-  }
+  };
 
-}]);
+  return CountryService;
+}

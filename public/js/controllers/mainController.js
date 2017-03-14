@@ -1,40 +1,26 @@
-angular.module('mainController', []).controller('MainController', function($scope, $http) {
-  var self = $scope;
+angular
+  .module('emissionByCountry')
+  .controller('MainController', MainController);
+
+function MainController (CountryService) {
+  var self = this;
   self.tagline = 'To the moon and back!';
 
   //get list of countries and emission data from database
-  $http({
-    method: 'GET',
-    url: '/api/countrys'
-  }).then(function onSuccess(res){
-
-    //browser console output
-    console.log('http get request to /api/countrys successful');
-    console.log('Server responded with: ');
-    console.log(res);
+  CountryService.get().then(function (data) {
 
     //display test region once on UI
-    self.firstQueryData = res.data[0].region; //region is a property of data[]
+    self.firstQueryData = data[0].country; //region is a property of data[]
 
     //update dropdown list on UI
-    self.regions = generateRegionList(res.data, self);
-
-
-
-  }, function onError(res){
-    console.log('Error with http request to /api/countrys');
-    console.log(res);
+    self.countries = generateCountryList(data);
   });
 
-  function generateRegionList(data, self) {
-    var regions = [];
-    for(var i = 0; i < data.length; i++){
-      regions[i] = data[i].region;
+  function generateCountryList(data) {
+    var countries = [];
+    for (var i = 0; i < data.length; i++) {
+      countries[i] = data[i].country;
     }
-    return regions;
+    return countries;
   }
-
-  function updateRegionList(regions, self) {
-    self.regions = regions;
-  }
-});
+}
