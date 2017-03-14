@@ -3,13 +3,19 @@ angular.module('emissionByCountry').config(['$routeProvider', '$locationProvider
 function angularRouting($routeProvider, $locationProvider) {
 
   //homepage
-  $routeProvider.when('/', {
-    templateUrl: 'views/index.pug',
-    controller: 'MainController'
-  });
+  $routeProvider
+    .when('/', {
+      templateUrl: 'countries/default.pug',
+      controller: 'MainController'
+    })
 
-  $locationProvider.html5Mode({
-    enabled: true,
-    requireBase: false
-  });
+    // TODO: japan controller
+    .when('/Japan', {
+      templateUrl: 'countries/japan.pug',
+      controller: 'MainController'
+    })
+  ;
+
+  $locationProvider.html5Mode(true);
+
 }

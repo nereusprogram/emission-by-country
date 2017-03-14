@@ -26,12 +26,18 @@ module.exports = function(app, pool){
 
   });
 
-  // CRUD routes here
-  // handle creating (app.post)
-  // handle delete (app.delete)
+  // FRONTEND ROUTES =========================================================
 
-  // frontend routes
-  // route to handle all angular requests
+  /* since pug can only be rendered by the server (can't be done client-side)
+   * this allows express to render frontend routes, as directed by
+   * angularRoutes.js
+   */
+  app.get('/countries/:countryName', function(req, res){
+    var countryName = req.params.countryName;
+    res.render(path.join(__dirname, '../public', 'views', 'countries', countryName));
+  });
+
+  // default route
   app.get('*', function(req, res){
     console.log('rendering default route');
     res.render('index', {root: path.join(__dirname, '../public'),

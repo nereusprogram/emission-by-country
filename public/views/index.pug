@@ -2,15 +2,19 @@ doctype html
 html(lang='en')
     head
         title= pageTitle
+        base(href='/')
         meta(name='viewport', content='width=device-width, initial-scale=1')
 
-        //jQuery for bootstrap
-        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+        //nereus favicon
+        link(rel='shortcut icon', href='favicon.ico')
 
-        //bootsrap, scotch guide puts "bootstrap": "latest" in bower.json
-        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
-        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', crossorigin='anonymous')
-        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+        //jQuery for bootstrap
+        script(src='https://code.jquery.com/jquery-3.1.1.slim.min.js', integrity='sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n', crossorigin='anonymous')
+
+        //bootstrap
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', integrity='sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js', integrity='sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb', crossorigin='anonymous')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', integrity='sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn', crossorigin='anonymous')
 
         //load angular
         script(src='libs/angular/angular.js')
@@ -23,13 +27,17 @@ html(lang='en')
         script(src='js/services/CountryService.js')
         script(src='js/controllers/mainController.js')
 
+        link(rel='stylesheet', href='css/mainStyles.css')
+
     body(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
         h1.text-center Emission By Country
         p First query data: {{ mainCtrl.firstQueryData }}
-        div.dropdown
-            button.btn.btn-primary.dropdown-toggle(type='button', id='dropdownMenuButton', data-toggle='dropdown') regions
-            ul.dropdown-menu
-                li
-                    a(ng-repeat='country in mainCtrl.countries track by $index') {{ country }}
-        select(ng-model='countryNames' ng-options='country for country in mainCtrl.countries')
-
+        div.col-sm-2
+            div.dropdown
+                button.btn.btn-info.dropdown-toggle(type='button', id='dropdownMenuButton', data-toggle='dropdown') Countries
+                    span.caret
+                div.dropdown-menu
+                    a.dropdown-item(href='{{country}}', ng-repeat='country in mainCtrl.countries track by $index') {{ country }}
+        div.col-sm-10
+            div#main
+                div(ng-view)

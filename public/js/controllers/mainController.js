@@ -9,7 +9,7 @@ function MainController (CountryService) {
   //get list of countries and emission data from database
   CountryService.get().then(function (data) {
 
-    //display test region once on UI
+    //display test country once on UI
     self.firstQueryData = data[0].country; //region is a property of data[]
 
     //update dropdown list on UI
