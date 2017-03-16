@@ -1,7 +1,7 @@
 doctype html
 html(lang='en')
     head
-        title= pageTitle
+        title='Emission By Country: Home'
         base(href='/')
         meta(name='viewport', content='width=device-width, initial-scale=1')
 
@@ -26,18 +26,20 @@ html(lang='en')
         script(src='js/angularRoutes.js')
         script(src='js/services/CountryService.js')
         script(src='js/controllers/mainController.js')
+        script(src='js/controllers/graphController.js')
 
         link(rel='stylesheet', href='css/mainStyles.css')
 
     body(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
         h1.text-center Emission By Country
-        p First query data: {{ mainCtrl.firstQueryData }}
         div.col-sm-2
             div.dropdown
                 button.btn.btn-info.dropdown-toggle(type='button', id='dropdownMenuButton', data-toggle='dropdown') Countries
                     span.caret
                 div.dropdown-menu
                     a.dropdown-item(href='{{country}}', ng-repeat='country in mainCtrl.countries track by $index') {{ country }}
-        div.col-sm-10
-            div#main
-                div(ng-view)
+        div.col-sm-10#main
+            // TODO: figure out why 'RangeError: Maximum call stack size exceeded' happens with ng-view
+            //div(ng-view)
+
+

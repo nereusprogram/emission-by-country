@@ -32,17 +32,16 @@ module.exports = function(app, pool){
    * this allows express to render frontend routes, as directed by
    * angularRoutes.js
    */
-  app.get('/countries/:countryName', function(req, res){
-    var countryName = req.params.countryName;
-    res.render(path.join(__dirname, '../public', 'views', 'countries', countryName));
+  app.get('/graph', function (req, res){
+    res.render(path.join(__dirname, '../public', 'views', 'graph.pug'));
   });
 
   // default route
   app.get('*', function(req, res){
     console.log('rendering default route');
-    res.render('index', {root: path.join(__dirname, '../public'),
-      pageTitle: ' Emission By Country: Home'}); //load public/index.pug
+    res.render('index', {root: path.join(__dirname, '../public')}); //load public/index.pug
   });
+
   /* '*' specifies all other routes
    * allows angular to handle routing
    */
