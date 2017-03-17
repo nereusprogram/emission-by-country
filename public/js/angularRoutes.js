@@ -4,17 +4,8 @@ function angularRouting($routeProvider, $locationProvider) {
 
   //homepage
   $routeProvider
-    // TODO: japan controller
-    .when('/Japan', {
-      templateUrl: 'countries/japan.pug'
-    })
-
     .when('/', {
-      redirectTo: '/graph'
-    })
-
-    .when('/graph', {
-      templateUrl: '/graph.pug'
+      templateUrl: '/graph/graph.pug'
     })
   ;
 

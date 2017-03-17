@@ -32,8 +32,8 @@ module.exports = function(app, pool){
    * this allows express to render frontend routes, as directed by
    * angularRoutes.js
    */
-  app.get('/graph', function (req, res){
-    res.render(path.join(__dirname, '../public', 'views', 'graph.pug'));
+  app.get('/graph/graph.pug', function (req, res){
+    res.render(path.join(__dirname, '../public', 'views', 'graph', 'graph.pug'));
   });
 
   // default route

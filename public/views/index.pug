@@ -40,6 +40,6 @@ html(lang='en')
                     a.dropdown-item(href='{{country}}', ng-repeat='country in mainCtrl.countries track by $index') {{ country }}
         div.col-sm-10#main
             // TODO: figure out why 'RangeError: Maximum call stack size exceeded' happens with ng-view
-            //div(ng-view)
+            div(ng-view)
 
 
