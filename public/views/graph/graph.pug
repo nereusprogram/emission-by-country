@@ -1,2 +1,14 @@
-div.graph-wrapper(ng-controller='GraphController as graphCtrl')
-    p graph has loaded.
+div#contentWrapper(ng-controller='GraphController as graphCtrl')
+    div.row
+        div.col-sm-6.btn-group
+                button.btn.btn-info.dropdown-toggle(type='button', id='dropdownMenuButton', data-toggle='dropdown') Countries
+                    span.caret
+                div.dropdown-menu
+                    a.dropdown-item(href='{{country}}', ng-repeat='country in mainCtrl.countries track by $index') {{ country }}
+
+        div.col-sm-6.graph-wrapper {{graphCtrl.tagline}}
+
+    div.row
+        div.col-sm-6
+            high-chart-directive
+        div.col-sm-6 {{graphCtrl.selectedCountry}}

@@ -1,45 +1,46 @@
-doctype html
+doctype html            // TODO: figure out why 'RangeError: Maximum call stack size exceeded' happens with ng-view
+
 html(lang='en')
     head
         title='Emission By Country: Home'
         base(href='/')
         meta(name='viewport', content='width=device-width, initial-scale=1')
 
-        //nereus favicon
+        // nereus favicon
         link(rel='shortcut icon', href='favicon.ico')
 
-        //jQuery for bootstrap
-        script(src='https://code.jquery.com/jquery-3.1.1.slim.min.js', integrity='sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n', crossorigin='anonymous')
+        // jQuery
+        script(src='https://code.jquery.com/jquery-3.1.1.min.js')
 
-        //bootstrap
+        // bootstrap
         link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', integrity='sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ', crossorigin='anonymous')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js', integrity='sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb', crossorigin='anonymous')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', integrity='sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn', crossorigin='anonymous')
 
-        //load angular
+        // load angular
         script(src='libs/angular/angular.js')
         script(src='libs/angular-route/angular-route.js')
         script(src='libs/angular-animate/angular-animate.js')
 
-        //load custom angular components
+        // load custom angular components
         script(src='js/app.js')
         script(src='js/angularRoutes.js')
         script(src='js/services/CountryService.js')
+        script(src='js/services/highChartService.js')
         script(src='js/controllers/mainController.js')
         script(src='js/controllers/graphController.js')
+        script(src='js/directives/highChartDirective.js')
 
         link(rel='stylesheet', href='css/mainStyles.css')
 
+        // highcharts for world map
+        script(type='text/javascript', src='https://code.highcharts.com/maps/highmaps.js')
+        script(type='text/javascript', src='https://code.highcharts.com/maps/modules/data.js')
+        script(type='text/javascript', src='https://code.highcharts.com/mapdata/custom/world-highres.js')
+
     body(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
         h1.text-center Emission By Country
-        div.col-sm-2
-            div.dropdown
-                button.btn.btn-info.dropdown-toggle(type='button', id='dropdownMenuButton', data-toggle='dropdown') Countries
-                    span.caret
-                div.dropdown-menu
-                    a.dropdown-item(href='{{country}}', ng-repeat='country in mainCtrl.countries track by $index') {{ country }}
-        div.col-sm-10#main
-            // TODO: figure out why 'RangeError: Maximum call stack size exceeded' happens with ng-view
+        div#main
             div(ng-view)
 
 
