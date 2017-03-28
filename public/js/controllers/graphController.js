@@ -1,13 +1,16 @@
 angular
   .module('emissionByCountry')
-  .controller('GraphController', GraphController);
+  .controller('GraphController', ['$scope', GraphController]);
 
-function GraphController(highChartService) {
+function GraphController($scope) {
   var self = this;
 
   self.tagline = 'graph has loaded';
+  self.selectedCountry = 'unselected from controller';
 
-  //TODO-chantelle: make the UI watch for changes and update when the service updates selectedCountry
-  highChartService.getSelectedCountry(self);
-
+  self.updateSelectedCountry = function(newCountry){
+    self.selectedCountry = newCountry;
+    console.log('selectedCountry (from controller): ' + self.selectedCountry);
+    $scope.$apply();
+  };
 }

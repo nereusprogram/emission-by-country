@@ -20,3 +20,10 @@ to restart mysql server.
 `netstat -tln` outside mySQL terminal to check to see if port is open.
 
 Check `/var/log/mysql` to double check mySQL logs to see that restart has indeed occured.
+
+### Troubleshooting Running Prod
+If difficulty running on port 80: 
+<pre><code>
+sudo apt-get install libcap2-bin
+sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
+</code></pre>
