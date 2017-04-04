@@ -8,7 +8,7 @@ function GraphController($scope, CountriesByName) {
   self.tagline = 'graph has loaded';
   self.selectedCountry = 'unselected from controller';
   self.dbData = [];
-  self.matchingDataFromDB = {};
+
 
   CountriesByName.get().then(function (res) {
     self.dbData = res;
@@ -21,14 +21,15 @@ function GraphController($scope, CountriesByName) {
   };
 
   function searchForCountryInDatabase() {
+    self.matchingDataFromDB = {};
     for(var i = 0; i < self.dbData.length; i++){
       if(self.selectedCountry == self.dbData[i].name){
         self.matchingDataFromDB = self.dbData[i];
-        $scope.$apply();
         console.log(self.matchingDataFromDB);
       }
     }
-    if (self.matchingDataFromDB == undefined){
+    $scope.$apply();
+    if (angular.equals(self.matchingDataFromDB, {})){
       console.log('Country Not Found in Database');
     }
   }
