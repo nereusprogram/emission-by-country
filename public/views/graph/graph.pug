@@ -11,4 +11,5 @@ div#contentWrapper(ng-controller='GraphController as graphCtrl')
     div.row
         div.col-sm-6
             high-chart-directive(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', derp='graphCtrl.sc')
-        div.col-sm-6 {{graphCtrl.selectedCountry}}
+        div.col-sm-3 {{graphCtrl.selectedCountry}}
+        div.col-sm-3 Matching Data from DB {{graphCtrl.matchingDataFromDB}}

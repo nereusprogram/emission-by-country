@@ -11,7 +11,6 @@ function highChartDirective() {
 
       function mapClick(event) {
         scope.updateSelectedCountry({newCountry: event.point.name});
-        console.log('selectedCountry (from directive): ' + event.point.name);
       }
     }
   };
@@ -24,15 +23,15 @@ function highChartDirective() {
       mapNavigation: {
         enabled: true,
         buttonOptions: {
+          align:'right',
           verticalAlign: 'bottom'
         }
       },
       series: [{
-        data: getTestCountries(),
+        data: getAllCountries(),
         mapData: Highcharts.maps['custom/world-highres'],
-        // TODO-chantelle: figure out how geoJSON joinBy works
         joinBy: 'hc-key',
-        name: 'Emission per capita',
+        name: ' ',
         states: {
           hover: {
             color: '#9370DB'
@@ -55,24 +54,6 @@ function highChartDirective() {
     };
   }
 
-  function getTestCountries() {
-    return [
-      {
-        "hc-key": "ca",
-        "value": 0
-      },
-      {
-        "hc-key": "us",
-        "value": 1
-      },
-      {
-        "hc-key": "ru",
-        "value": 2
-      }
-    ];
-  }
-
-  // TODO-chantelle: replace dummy data with countries from database
   function getAllCountries() {
     return [
       {

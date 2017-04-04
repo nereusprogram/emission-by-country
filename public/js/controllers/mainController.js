@@ -16,7 +16,7 @@ function MainController (CountryService) {
 function generateCountryList(data) {
   var countries = [];
   for (var i = 0; i < data.length; i++) {
-    countries[i] = data[i].country;
+    countries[i] = data[i].name;
   }
   return countries;
 }
