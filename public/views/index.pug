@@ -22,6 +22,11 @@ html(lang='en')
         script(src='libs/angular-route/angular-route.js')
         script(src='libs/angular-animate/angular-animate.js')
 
+        // highcharts for world map
+        script(type='text/javascript', src='https://code.highcharts.com/maps/highmaps.js')
+        script(type='text/javascript', src='https://code.highcharts.com/maps/modules/data.js')
+        script(type='text/javascript', src='https://code.highcharts.com/mapdata/custom/world-highres.js')
+
         // load custom angular components
         script(src='js/app.js')
         script(src='js/angularRoutes.js')
@@ -32,11 +37,6 @@ html(lang='en')
         script(src='js/directives/highChartDirective.js')
 
         link(rel='stylesheet', href='css/mainStyles.css')
-
-        // highcharts for world map
-        script(type='text/javascript', src='https://code.highcharts.com/maps/highmaps.js')
-        script(type='text/javascript', src='https://code.highcharts.com/maps/modules/data.js')
-        script(type='text/javascript', src='https://code.highcharts.com/mapdata/custom/world-highres.js')
 
     body(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
         h1.text-center Emission By Country

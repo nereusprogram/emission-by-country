@@ -15,8 +15,6 @@ function countryAPIReq($http) {
 
           // browser console output
           console.log('http get request to /api/countries successful');
-          console.log('Server responded with: ');
-          console.log(res);
 
           return res.data;
 
