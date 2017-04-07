@@ -27,10 +27,10 @@ module.exports = function(app, pool){
   });
 
   // request to get countries by name for populating highcharts map
-  // as a courtesy, send emissions data as well
+  // send all emissions related data as well
   app.get('/api/countryNames', function (req, res) {
     console.log('server route for /api/countryNames called');
-    var queryString = 'SELECT name, emissions FROM emission_by_country_schema.emission_by_country_tbl;';
+    var queryString = 'SELECT * FROM data_by_country_tbl;';
     apiReq.handleCountryRequest(pool, queryString, res, respondToRequest);
   });
 

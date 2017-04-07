@@ -61,6 +61,7 @@ angular.module('emissionByCountry')
                 item: d
               });
             })
+            .attr("fill", "#3C2B5B")
             .attr("height", 30) // height of each bar
             .attr("width", 0) // initial width of 0 for transition
             .attr("x", 10) // half of the 20 side margin specified above
@@ -70,14 +71,15 @@ angular.module('emissionByCountry')
             .transition()
             .duration(1000) // time of duration
             .attr("width", function(d){
-              return (d.emissions*100/22686.19106)/(max/width);
+              return (d.propertyValue)
+                /(max/width);
             }); // width based on scale
 
           svg.selectAll("text")
             .data(data)
             .enter()
             .append("text")
-            .attr("fill", "#fff")
+            .attr("fill", "#FFFFFF")
             .attr("y", function(d, i){
               return i * 35 + 22;
             })

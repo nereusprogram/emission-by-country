@@ -13,8 +13,11 @@ div#contentWrapper(ng-controller='GraphController as graphCtrl')
             high-chart-directive(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)')
         div.col-sm-6
             div.row
-                div.col-sm-6 {{graphCtrl.selectedCountry}}
-                div.col-sm-6 Matching Data from DB {{graphCtrl.matchingDataFromDB[0]}}
-            div.row
                 div.col-sm-12 D3 Graph
-                    d3-directive(data='graphCtrl.matchingDataFromDB', label='name', on-click='graphCtrl.d3OnClick(item)')
+                    d3-directive(data='graphCtrl.matchingDataFromDBWorld', label='name', on-click='graphCtrl.d3OnClick(item)')
+            div.row
+                div.col-sm-12
+                    d3-directive(data='graphCtrl.matchingDataFromDB', label='propertyName', on-click='graphCtrl.d3OnClick(item)')
+            div.row
+                div.col-sm-6 {{graphCtrl.selectedCountry}}
+                div.col-sm-6 Matching Data from DB {{graphCtrl.matchingDataFromDB}}
