@@ -61,7 +61,7 @@ angular.module('emissionByCountry')
                 item: d
               });
             })
-            .attr("fill", "#3C2B5B")
+            .attr("fill", "#4f83cc")
             .attr("height", 30) // height of each bar
             .attr("width", 0) // initial width of 0 for transition
             .attr("x", 10) // half of the 20 side margin specified above

@@ -1,19 +1,27 @@
 angular.module('emissionByCountry').directive('highChartDirective', highChartDirective);
 
 function highChartDirective() {
+  var test = [{ 'name': 'Canada'}];
+
   return {
     restrict: 'E',
     scope: {
-      updateSelectedCountry: '&'
+      updateSelectedCountry: '&',
+      data: '='
     },
     link: function (scope, element) {
+      console.log('highmaps data: ' + scope.data);
+
       Highcharts.mapChart(element[0], getMapOptions(mapClick));
+
 
       function mapClick(event) {
         scope.updateSelectedCountry({newCountry: event.point.name});
       }
+
     }
   };
+
 
   function getMapOptions(callback) {
     return {

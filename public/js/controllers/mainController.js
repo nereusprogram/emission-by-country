@@ -2,21 +2,16 @@ angular
   .module('emissionByCountry')
   .controller('MainController', MainController);
 
-function MainController (CountryService) {
+function MainController (CountriesByName) {
   var self = this;
+  self.countryNames = [];
+  self.testtest = [{'name': 'Canada'}];
 
-  //get list of countries and emission data from database
-  CountryService.get().then(function (data) {
+  CountriesByName.get().then(function (res) {
+    self.dbData = res;
 
-    //update dropdown list on UI
-    self.countries = generateCountryList(data);
+    for(var i = 0; i < self.dbData.length; i++){
+      self.countryNames.push({'name': self.dbData[i].name});
+    }
   });
-}
-
-function generateCountryList(data) {
-  var countries = [];
-  for (var i = 0; i < data.length; i++) {
-    countries[i] = data[i].name;
-  }
-  return countries;
 }

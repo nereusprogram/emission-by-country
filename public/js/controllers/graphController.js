@@ -1,11 +1,11 @@
 angular
   .module('emissionByCountry')
-  .controller('GraphController', ['$scope', 'CountriesByName', GraphController]);
+  .controller('GraphController', ['$scope', '$location', 'smoothScrollService', 'CountriesByName', GraphController]);
 
-function GraphController($scope, CountriesByName) {
+function GraphController($scope, $location, smoothScrollService, CountriesByName) {
   var self = this;
 
-  self.tagline = 'graph has loaded';
+  // self.tagline = 'graph has loaded';
   self.selectedCountry = 'unselected from controller';
   self.dbData = [];
   self.matchingDataFromDBWorld = [{name: 'World Average', propertyValue: 15}];
@@ -33,6 +33,9 @@ function GraphController($scope, CountriesByName) {
     self.selectedCountry = newCountry;
     $scope.$apply();
     searchForCountryInDatabase();
+
+    $location.hash('selectedCountryInfo');
+    smoothScrollService.scrollTo('selectedCountryInfo');
   };
 
   self.d3OnClick = function(item){
@@ -42,7 +45,7 @@ function GraphController($scope, CountriesByName) {
 
   function searchForCountryInDatabase() {
     for(var i = 0; i < self.dbData.length; i++){
-      if(self.selectedCountry == self.dbData[i].name){
+      if(self.selectedCountry === self.dbData[i].name){
 
         var propertyNames = Object.keys(self.dbData[i]);
         self.matchingDataFromDB = [];

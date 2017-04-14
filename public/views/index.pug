@@ -32,17 +32,20 @@ html(lang='en')
         script(src='js/angularRoutes.js')
         script(src='js/services/CountryService.js')
         script(src='js/services/CountriesByName.js')
+        script(src='js/services/smoothScrollService.js')
         script(src='js/services/d3Service.js')
         script(src='js/controllers/mainController.js')
         script(src='js/controllers/graphController.js')
+        script(src='js/controllers/missingCountriesController.js')
         script(src='js/directives/highChartDirective.js')
         script(src='js/directives/d3Directive.js')
 
         link(rel='stylesheet', href='css/mainStyles.css')
 
     body(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
-        h1.text-center Emission By Country
+        h1.text-center.bottom-margin.top-margin Emission By Country
         div#main
+            // (ng-controller='missingCountriesController')
             div(ng-view)
 
 

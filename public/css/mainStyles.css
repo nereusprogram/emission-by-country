@@ -1,3 +1,16 @@
-#main{
-    background-color: #B2D3E8;
+body {
+    background-color: #01579b;
+    color: #ffffff;
+}
+
+.bottom-margin {
+    margin-bottom: 40px;
+}
+
+.top-margin {
+    margin-top: 20px;
+}
+
+.wide-af{
+    width: 100%;
 }
