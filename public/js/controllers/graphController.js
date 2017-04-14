@@ -6,7 +6,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
   var self = this;
 
   // self.tagline = 'graph has loaded';
-  self.selectedCountry = 'unselected from controller';
+  self.selectedCountry = 'Select a country on the map!';
   self.dbData = [];
   self.matchingDataFromDBWorld = [{name: 'World Average', propertyValue: 15}];
   self.matchingDataFromDB = [];
