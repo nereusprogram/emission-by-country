@@ -41,8 +41,8 @@ html(lang='en')
 
         link(rel='stylesheet', href='css/mainStyles.css')
 
-    body(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
-        h1.text-center.bottom-margin.top-margin#top Emission By Country
+    body#top(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
+        h1.text-center.bottom-margin.top-margin Emission By Country
         div#main
             // (ng-controller='missingCountriesController')
             div(ng-view)
