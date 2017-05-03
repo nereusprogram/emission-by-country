@@ -9,10 +9,7 @@ function highChartDirective() {
       data: '='
     },
     link: function (scope, element) {
-      console.log('highmaps data: ' + scope.data);
-
       Highcharts.mapChart(element[0], getMapOptions(mapClick));
-
 
       function mapClick(event) {
         scope.updateSelectedCountry({newCountry: event.point.name});

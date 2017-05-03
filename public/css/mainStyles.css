@@ -21,9 +21,9 @@ body {
 }
 
 #toTop {
-    padding: 5px 3px;
+    padding: 5px;
+    margin: auto;
     position: fixed;
     top: 0;
-    left: 45%;
     display: none;
 }

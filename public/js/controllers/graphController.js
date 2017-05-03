@@ -10,8 +10,9 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
   self.dbData = [];
   // world average calculated from world population data from worldometers.info,
   // worldometers.info pulled data from UN 2015 report
-  self.matchingDataFromDBWorld = [{name: 'World Average CO2 Emission (Tons)', propertyValue: 12.2*100/39.7362666248}];
+  self.matchingDataFromDBWorld = [{name: 'World average per capita CO2 emission (Tons)', propertyValue: 12.2*100/39.7362666248}];
   self.matchingDataFromDB = [];
+  self.matchingDataFromDBForD3 = [];
   self.maxValueForEachProperty = [
     {"propertyName":"name","propertyValue": "Qatar"},
     {"propertyName":"perCapitaCO2Emission","propertyValue":39.7362666248},
@@ -50,26 +51,52 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       if(self.selectedCountry === self.dbData[i].name){
 
         var propertyNames = Object.keys(self.dbData[i]);
-        self.matchingDataFromDB = [];
 
         // a = 1 avoids name of country being stored in the selected country object being
         // passed to the d3Directive
         for(var a = 1; a < propertyNames.length; a++) {
+
           self.matchingDataFromDB.push({
             propertyName: propertyNames[a],
+            displayPropertyName: camelCaseToNormal(propertyNames[a]),
             actualValue: self.dbData[i][propertyNames[a]],
+            displayActualValue: self.dbData[i][propertyNames[a]].toString(),
 
             // if propertyValue is negative, return the positive scaled version of the value
             propertyValue: (self.dbData[i][propertyNames[a]] * 100 / self.maxValueForEachProperty[a].propertyValue)
           });
+
         }
 
-        console.log(self.matchingDataFromDB);
+        for(var b = 0; b < self.matchingDataFromDB.length; b++) {
+          // indecies of the 3 data points I want to graph
+          if(b === 0 || b === 8 || b === 9){
+            self.matchingDataFromDBForD3.push({
+              propertyName: self.matchingDataFromDB[b].propertyName,
+              // if propertyValue is negative, return the positive scaled version of the value
+              propertyValue: self.matchingDataFromDB[b].propertyValue
+            });
+          }
+          console.log('data for D3: ' + self.matchingDataFromDBForD3);
+        }
+
+
       }
     }
+
     $scope.$apply();
-    if (angular.equals(self.matchingDataFromDB, {})){
-      console.log('Country Not Found in Database');
-    }
+
   } // searchForCountryInDatabase
+
+  function camelCaseToNormal (str){
+    return str
+      // insert a space between lower & upper
+      .replace(/([a-z])([A-Z])/g, '$1 $2')
+      // space before last upper in a sequence followed by lower
+      .replace(/\b([A-Z]+)([A-Z])([a-z])/, '$1 $2$3')
+      // uppercase the first character
+      .replace(/^./, function(str){ return str.toUpperCase(); })
+      //space after number 2 in CO2
+      .split('2').join('2 ')
+  }
 }
