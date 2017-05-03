@@ -11,6 +11,19 @@ body {
     margin-top: 20px;
 }
 
+.side-margins {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .wide-af{
     width: 100%;
+}
+
+#toTop {
+    padding: 5px 3px;
+    position: fixed;
+    top: 0;
+    left: 45%;
+    display: none;
 }

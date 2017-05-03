@@ -6,9 +6,11 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
   var self = this;
 
   // self.tagline = 'graph has loaded';
-  self.selectedCountry = 'Select a country on the map!';
+  self.selectedCountry = 'Select a country';
   self.dbData = [];
-  self.matchingDataFromDBWorld = [{name: 'World Average', propertyValue: 15}];
+  // world average calculated from world population data from worldometers.info,
+  // worldometers.info pulled data from UN 2015 report
+  self.matchingDataFromDBWorld = [{name: 'World Average CO2 Emission (Tons)', propertyValue: 12.2*100/39.7362666248}];
   self.matchingDataFromDB = [];
   self.maxValueForEachProperty = [
     {"propertyName":"name","propertyValue": "Qatar"},

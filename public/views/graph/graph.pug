@@ -11,8 +11,15 @@ div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
 
     div.row
         high-chart-directive.wide-af(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', data='mainCtrl.testtest')
-    div.row.col-xs-12
-        span.col-xs-6 D3 Graph
-            d3-directive(data='graphCtrl.matchingDataFromDBWorld', label='name', on-click='graphCtrl.d3OnClick(item)')
-        div.col-xs-6#selectedCountryInfo {{graphCtrl.selectedCountry}}
-            d3-directive(data='graphCtrl.matchingDataFromDB', label='propertyName', on-click='graphCtrl.d3OnClick(item)')
+    div.top-margin#spacer
+    div#toTop
+        button.btn.btn-info(ng-click='mainCtrl.backToTop()') Back to Top
+    div.top-margin#spacer
+    div.row.top-margin
+        div.col-xs-6
+            div.col-xs-12.side-margins#selectedCountryInfo
+                h3 {{graphCtrl.selectedCountry}}
+                d3-directive(data='graphCtrl.matchingDataFromDBWorld', label='name', on-click='graphCtrl.d3OnClick(item)')
+                d3-directive(data='graphCtrl.matchingDataFromDB', label='propertyName', on-click='graphCtrl.d3OnClick(item)')
+        div.col-xs-6
+            div.col-xs-12.side-margins Impacts of CO2 Emissions

@@ -1,7 +1,6 @@
 angular.module('emissionByCountry').directive('highChartDirective', highChartDirective);
 
 function highChartDirective() {
-  var test = [{ 'name': 'Canada'}];
 
   return {
     restrict: 'E',
@@ -143,11 +142,11 @@ function highChartDirective() {
       {
         "hc-key": "dk",
         "value": 19
-      },
+      },/*william doesn't have data for greenland
       {
         "hc-key": "gl",
         "value": 20
-      },
+      }, */
       {
         "hc-key": "pr",
         "value": 21
@@ -523,11 +522,11 @@ function highChartDirective() {
       {
         "hc-key": "zm",
         "value": 114
-      },
+      }, /* William's dataset doesnt include northern cyprus
       {
         "hc-key": "nc",
         "value": 115
-      },
+      }, */
       {
         "hc-key": "za",
         "value": 116
@@ -576,10 +575,11 @@ function highChartDirective() {
         "hc-key": "uy",
         "value": 127
       },
+      /* William's dataset doesnt include
       {
         "hc-key": "cnm",
         "value": 128
-      },
+      }, */
       {
         "hc-key": "mn",
         "value": 129
