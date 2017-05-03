@@ -51,6 +51,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       if(self.selectedCountry === self.dbData[i].name){
 
         var propertyNames = Object.keys(self.dbData[i]);
+        self.matchingDataFromDB = [];
+        self.matchingDataFromDBForD3 = [];
 
         // a = 1 avoids name of country being stored in the selected country object being
         // passed to the d3Directive
