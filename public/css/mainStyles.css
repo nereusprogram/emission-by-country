@@ -1,6 +1,7 @@
 body {
-    background-color: #01579b;
-    color: #ffffff;
+    background-color: #3AD7D5;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .bottom-margin {
@@ -16,8 +17,18 @@ body {
     margin-right: 10px;
 }
 
-.wide-af{
+.wide-af {
     width: 100%;
+}
+
+.btn-custom {
+    color: #ffffff;
+    background-color: #17314A;
+}
+
+.btn-custom:hover, .btn-custom:focus, .btn-custom:active, .btn-custom.active {
+    color: #ffffff;
+    background-color: #0282DA;
 }
 
 #toTop {
@@ -28,12 +39,8 @@ body {
     display: none;
 }
 
-.show-cols-first {
-    background-color: #48ca00;
-
-}
-
-.show-cols-second {
-    background-color: #ca0657;
-
+#impactsTable {
+    display: none;
+    table-layout: fixed;
+    overflow: hidden;
 }

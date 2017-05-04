@@ -17,6 +17,9 @@ html(lang='en')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js', integrity='sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb', crossorigin='anonymous')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', integrity='sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn', crossorigin='anonymous')
 
+        link(rel='stylesheet', href='css/mainStyles.css')
+        link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet')
+
         // load angular
         script(src='libs/angular/angular.js')
         script(src='libs/angular-route/angular-route.js')
@@ -39,10 +42,12 @@ html(lang='en')
         script(src='js/directives/highChartDirective.js')
         script(src='js/directives/d3Directive.js')
 
-        link(rel='stylesheet', href='css/mainStyles.css')
+        //load CountUp.js
+        script(src='http://inorganik.github.io/countUp.js/countUp.js')
 
     body#top(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
-        h1.text-center.bottom-margin.top-margin Emission By Country
+        h1.text-center.bottom-margin.top-margin
+            strong Per Capita CO2 Emission By Country
         div#main
             // (ng-controller='missingCountriesController')
             div(ng-view)

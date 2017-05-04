@@ -32,13 +32,22 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     self.dbData = res;
   });
 
+  self.fixedWidthOfTable = ($('#impactsHeader').width());
+  console.log(self.fixedWidthOfTable);
+
   self.updateSelectedCountry = function(newCountry){
+
     self.selectedCountry = newCountry;
     $scope.$apply();
     searchForCountryInDatabase();
 
     $location.hash('selectedCountryInfo');
     smoothScrollService.scrollTo('selectedCountryInfo');
+
+    $('#impactsTable').fadeIn();
+    $('.fixed-width').width(self.fixedWidthOfTable);
+    console.log($('.fixed-width').width());
+
   };
 
   self.d3OnClick = function(item){
@@ -63,6 +72,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
             displayPropertyName: camelCaseToNormal(propertyNames[a]),
             actualValue: self.dbData[i][propertyNames[a]],
             displayActualValue: self.dbData[i][propertyNames[a]].toString(),
+            displayElementID: 'impactsNum'.concat((a-1).toString()),
 
             // if propertyValue is negative, return the positive scaled version of the value
             propertyValue: (self.dbData[i][propertyNames[a]] * 100 / self.maxValueForEachProperty[a].propertyValue)
@@ -79,7 +89,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
               propertyValue: self.matchingDataFromDB[b].propertyValue
             });
           }
-          console.log('data for D3: ' + self.matchingDataFromDBForD3);
         }
 
 
@@ -87,8 +96,33 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     }
 
     $scope.$apply();
+    
+    // in this case, it calls impactsCount()
+    impactsCount();
 
   } // searchForCountryInDatabase
+  
+  function impactsCount() {
+    var options = {
+      useEasing : true,
+      useGrouping : false,
+      separator : ',',
+      decimal : '.'
+    };
+
+    for(var c = 0; c < self.matchingDataFromDB.length; c++) {
+      var startValue =0;
+      var countToValue = parseFloat(self.matchingDataFromDB[c].displayActualValue.slice(0,7));
+      var numAnimate = new CountUp("impactsNum".concat(c.toString()), startValue.toFixed(decimalPlaces(countToValue)), countToValue, decimalPlaces(countToValue), 1.5, options);
+      numAnimate.start();
+    }
+
+  }
+
+  function decimalPlaces(value) {
+    if(Math.floor(value) === value) return 0;
+    return value.toString().split(".")[1].length || 0;
+  }
 
   function camelCaseToNormal (str){
     return str

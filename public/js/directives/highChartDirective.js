@@ -38,7 +38,7 @@ function highChartDirective() {
         name: ' ',
         states: {
           hover: {
-            color: '#9370DB'
+            color: '#1EB6F0'
           }
         },
         dataLabels: {
