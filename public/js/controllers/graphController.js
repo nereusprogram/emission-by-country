@@ -33,7 +33,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
   });
 
   self.fixedWidthOfTable = ($('#impactsHeader').width());
-  console.log(self.fixedWidthOfTable);
 
   self.updateSelectedCountry = function(newCountry){
 
@@ -46,7 +45,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
     $('#impactsTable').fadeIn();
     $('.fixed-width').width(self.fixedWidthOfTable);
-    console.log($('.fixed-width').width());
 
   };
 

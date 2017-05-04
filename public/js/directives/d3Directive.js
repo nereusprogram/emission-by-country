@@ -38,7 +38,7 @@ angular.module('emissionByCountry')
           // setup variables
           var width, height, max;
 
-          width = d3.select(iElement[0])[0][0].offsetWidth - 20;
+          width = d3.select(iElement[0])[0][0].offsetWidth - 50;
           // 20 is for margins and can be changed
 
           height = scope.data.length * 65;
@@ -61,7 +61,7 @@ angular.module('emissionByCountry')
                 item: d
               });
             })
-            .attr("fill", "#009B34")
+            .attr("fill", "#248EC2")
             .attr("height", 60) // height of each bar
             .attr("width", 0) // initial width of 0 for transition
             .attr("x", 10) // half of the 20 side margin specified above
@@ -79,7 +79,7 @@ angular.module('emissionByCountry')
             .data(data)
             .enter()
             .append("text")
-            .attr("fill", "#000000")
+            .attr("fill", "#ffffff")
             .attr("y", function(d, i){
               return i * 65 + 22;
             })

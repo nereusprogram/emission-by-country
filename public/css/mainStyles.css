@@ -1,6 +1,6 @@
 body {
-    background-color: #3AD7D5;
-    color: #000000;
+    background-color: #12344E;
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -23,12 +23,12 @@ body {
 
 .btn-custom {
     color: #ffffff;
-    background-color: #17314A;
+    background-color: #00A132;
 }
 
 .btn-custom:hover, .btn-custom:focus, .btn-custom:active, .btn-custom.active {
     color: #ffffff;
-    background-color: #0282DA;
+    background-color: #01C13E;
 }
 
 #toTop {
@@ -43,4 +43,9 @@ body {
     display: none;
     table-layout: fixed;
     overflow: hidden;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #27465E;
 }
