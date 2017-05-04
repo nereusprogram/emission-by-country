@@ -15,17 +15,15 @@ div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
     div#toTop
         button.btn.btn-info#toTopButton(ng-click='mainCtrl.backToTop()') Back to Top
     div.top-margin#spacer
-    div.row.top-margin
-        div.col-xs-6
-            div.col-xs-12.side-margins#selectedCountryInfo
-                h3 {{graphCtrl.selectedCountry}}
-                d3-directive(data='graphCtrl.matchingDataFromDBWorld', label='name', on-click='graphCtrl.d3OnClick(item)')
-                d3-directive(data='graphCtrl.matchingDataFromDBForD3', label='propertyName', on-click='graphCtrl.d3OnClick(item)')
-        div.col-xs-6
-            div.col-xs-12.side-margins
-                h3 Impacts of CO2 Emissions
-                table
-                    tr(ng-repeat='data in graphCtrl.matchingDataFromDB')
-                        td
-                            div {{data.displayPropertyName}}: {{data.displayActualValue | limitTo: 7 }}{{displayActualValue.length > 7 ? '...' : ''}}
-                            br
+    div.row.top-margin.side-margins.justify-content-center
+        div.col-xs-1.top-margin#selectedCountryInfo
+            h3 {{graphCtrl.selectedCountry}}
+            d3-directive(data='graphCtrl.matchingDataFromDBWorld', label='name', on-click='graphCtrl.d3OnClick(item)')
+            d3-directive(data='graphCtrl.matchingDataFromDBForD3', label='propertyName', on-click='graphCtrl.d3OnClick(item)')
+        div.col-xs-11.top-margin
+            h3 Impacts of CO2 Emissions
+            table
+                tr(ng-repeat='data in graphCtrl.matchingDataFromDB')
+                    td
+                        div {{data.displayPropertyName}}: {{data.displayActualValue | limitTo: 7 }}{{displayActualValue.length > 7 ? '...' : ''}}
+                        br

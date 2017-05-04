@@ -27,3 +27,13 @@ body {
     right: 2%;
     display: none;
 }
+
+.show-cols-first {
+    background-color: #48ca00;
+
+}
+
+.show-cols-second {
+    background-color: #ca0657;
+
+}
