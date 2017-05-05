@@ -60,7 +60,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
         var propertyNames = Object.keys(self.dbData[i]);
         self.matchingDataFromDB = [];
         self.matchingDataFromDBForD3 = [];
-
+        var units = ['', ' in Metric Tons', ' in MegaTons', ' in MegaTons',
+          ' in °C', ' in °C', ' in mmol/metres cubes', '', ' in Metric Tons', ' in %', ' in %'];
         // a = 1 avoids name of country being stored in the selected country object being
         // passed to the d3Directive
         for(var a = 1; a < propertyNames.length; a++) {
@@ -73,7 +74,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
             displayElementID: 'impactsNum'.concat((a-1).toString()),
 
             // if propertyValue is negative, return the positive scaled version of the value
-            propertyValue: (self.dbData[i][propertyNames[a]] * 100 / self.maxValueForEachProperty[a].propertyValue)
+            propertyValue: (self.dbData[i][propertyNames[a]] * 100 / self.maxValueForEachProperty[a].propertyValue),
+            propertyUnits: units[a]
           });
 
         }
@@ -111,7 +113,9 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     for(var c = 0; c < self.matchingDataFromDB.length; c++) {
       var startValue =0;
       var countToValue = parseFloat(self.matchingDataFromDB[c].displayActualValue.slice(0,7));
-      var numAnimate = new CountUp("impactsNum".concat(c.toString()), startValue.toFixed(decimalPlaces(countToValue)), countToValue, decimalPlaces(countToValue), 1.5, options);
+      var numAnimate = new CountUp("impactsNum".concat(c.toString()), 
+        startValue.toFixed(decimalPlaces(countToValue)), countToValue, 
+        decimalPlaces(countToValue), 1.5, options);
       numAnimate.start();
     }
 

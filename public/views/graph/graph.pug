@@ -1,19 +1,9 @@
 div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
-    //
-        div.row
-            div.col-sm-6.btn-group
-                    button.btn.btn-info.dropdown-toggle(type='button', id='dropdownMenuButton', data-toggle='dropdown') Countries
-                        span.caret
-                    div.dropdown-menu
-                        a.dropdown-item(href='{{country}}', ng-repeat='country in mainCtrl.countries track by $index') {{ country }}
-
-            div.col-sm-6.graph-wrapper {{graphCtrl.tagline}}
-
+    div#toTop
+        button.btn.btn-custom#toTopButton(ng-click='mainCtrl.backToTop()') Back to Top
     div.row
         high-chart-directive.wide-af(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', data='mainCtrl.testtest')
     div.top-margin#spacer
-    div#toTop
-        button.btn.btn-custom#toTopButton(ng-click='mainCtrl.backToTop()') Back to Top
     div.top-margin#spacer
     div.row.top-margin.side-margins.justify-content-center
         div.col-xs-6.top-margin#selectedCountryInfo
@@ -28,6 +18,6 @@ div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
                 tr(ng-repeat='data in graphCtrl.matchingDataFromDB')
                     td
                         div.fixed-width
-                            div {{data.displayPropertyName}}: {{''.toString()}}
+                            div {{data.displayPropertyName}} {{data.propertyUnits}}: {{''.toString()}}
                             div.lead(id='{{data.displayElementID}}')
                             br

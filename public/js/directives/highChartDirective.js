@@ -35,12 +35,12 @@ function highChartDirective() {
         data: getAllCountries(),
         mapData: Highcharts.maps['custom/world-highres'],
         nullColor: '#12344E',
-        borderColor: '#73CB8F',
+        borderColor: '#93A2AE',
         joinBy: 'hc-key',
         name: ' ',
         states: {
           hover: {
-            color: '#0281E1'
+            color: '#4BB16C'
           }
         },
         dataLabels: {
@@ -62,7 +62,7 @@ function highChartDirective() {
       },
       colorAxis: {
         dataClasses:[{
-          color: '#248EC2'
+          color: '#089436'
         }]
       }
     };
