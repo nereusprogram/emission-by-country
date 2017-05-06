@@ -9,8 +9,10 @@ function highChartDirective() {
       data: '='
     },
     link: function (scope, element) {
-      Highcharts.mapChart(element[0], getMapOptions(mapClick));
-
+      var chart = Highcharts.mapChart(element[0], getMapOptions(mapClick));
+      // gets highmaps to redraw to size of container correctly
+      setTimeout(chart.reflow(), 100);
+      setTimeout(chart.legend.destroy(), 100);
       function mapClick(event) {
         scope.updateSelectedCountry({newCountry: event.point.name});
       }
@@ -58,7 +60,8 @@ function highChartDirective() {
         }
       },
       chart: {
-        backgroundColor: '#12344E'
+        backgroundColor: '#12344E',
+        margin: 0
       },
       colorAxis: {
         dataClasses:[{

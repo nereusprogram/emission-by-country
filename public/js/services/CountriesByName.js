@@ -8,7 +8,6 @@ function CountriesByName($http) {
         method: 'GET',
         url: apiUrl
       }).then(function onSuccess(res){
-        console.log('http get request to ' + apiUrl + ' successful');
 
         return res.data;
 
