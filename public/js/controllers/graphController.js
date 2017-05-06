@@ -40,7 +40,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     $scope.$apply();
     searchForCountryInDatabase();
 
-    $location.hash('selectedCountryInfo');
     smoothScrollService.scrollTo('selectedCountryInfo');
 
     $('#impactsTable').fadeIn();
