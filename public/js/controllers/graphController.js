@@ -159,7 +159,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     function renderBubbleChart() {
 
       var height = ($(chartElementID).height() > 500) ? $(chartElementID).height() : 500;
-      var width = ($(chartElementID).width() > 200) ? $(chartElementID).width() : self.fixedWidthOfTable;
+      var width = ($(chartElementID).width() < 500) ? $('#visContainer').width() : 500
       var center = { x: width/2, y: height / 2 };
 
       var damper = 0.102;
