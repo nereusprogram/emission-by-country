@@ -4,7 +4,7 @@ html(lang='en')
     head
         title='Emission By Country: Home'
         base(href='/')
-        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
 
         // nereus favicon
         link(rel='shortcut icon', href='favicon.ico')
@@ -54,14 +54,10 @@ html(lang='en')
         h1.text-center.bottom-margin.top-margin
             strong Per Capita CO2 Emission By Country
         div#main
-            // (ng-controller='missingCountriesController')
-            // div(ng-view)
             div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
-                // some weird scope issue, back to top button can't be put in index.pug
                 button.btn.btn-custom#toTop(ng-click='mainCtrl.backToTop()') Back to Top
-                div.row#rowContainingBubbleVis
-                    div.col
-                        high-chart-directive.wide-af(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', data='mainCtrl.testtest')
+                div.row
+                    high-chart-directive.col-xs-12(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', data='mainCtrl.testtest')
                 div.top-margin#spacer
                 div.top-margin#spacer
                 div.row.top-margin.side-margins.justify-content-center.text-center
@@ -69,10 +65,11 @@ html(lang='en')
                     div.col.top-margin.justify-content-center#selectedCountryInfo
                         h4
                             strong {{graphCtrl.selectedCountry}}
-                        d3-directive(data='graphCtrl.matchingDataFromDBWorld', label='name', on-click='graphCtrl.d3OnClick(item)')
-                        d3-directive(data='graphCtrl.matchingDataFromDBForD3', label='propertyName', on-click='graphCtrl.d3OnClick(item)')
                         div#visContainer
                             div#CO2BubbleVis CO2 Bubble Vis
+                        // d3-directive(data='graphCtrl.matchingDataFromDBWorld', label='name', on-click='graphCtrl.d3OnClick(item)')
+                        // d3-directive(data='graphCtrl.matchingDataFromDBForD3', label='propertyName', on-click='graphCtrl.d3OnClick(item)')
+
                     div.col.top-margin.justify-content-center#impactsHeader
                         h4
                             strong Impacts of CO2 Emissions

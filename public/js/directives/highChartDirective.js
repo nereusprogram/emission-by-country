@@ -13,6 +13,8 @@ function highChartDirective() {
       // gets highmaps to redraw to size of container correctly
       setTimeout(chart.reflow(), 100);
       setTimeout(chart.legend.destroy(), 100);
+      /// this breaks everything setTimeout($(window).resize(), 100);
+
       function mapClick(event) {
         scope.updateSelectedCountry({newCountry: event.point.name});
       }

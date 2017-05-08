@@ -5,6 +5,10 @@ body {
     max-width: 100%;
 }
 
+high-chart-directive {
+    width: 100%;
+}
+
 #contentWrapper {
     max-width: 100%;
 }
