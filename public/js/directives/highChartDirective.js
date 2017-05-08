@@ -36,7 +36,7 @@ function highChartDirective() {
       series: [{
         data: getAllCountries(),
         mapData: Highcharts.maps['custom/world-highres'],
-        nullColor: '#12344E',
+        nullColor: '#93A2AE',
         borderColor: '#93A2AE',
         joinBy: 'hc-key',
         name: ' ',
@@ -793,11 +793,11 @@ function highChartDirective() {
       {
         "hc-key": "bf",
         "value": 179
-      },
+      },/* doesn't exist in William's data
       {
         "hc-key": "ss",
         "value": 180
-      },
+      },*/
       {
         "hc-key": "na",
         "value": 181

@@ -63,7 +63,7 @@ html(lang='en')
                     div.col
                         high-chart-directive.wide-af(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', data='mainCtrl.testtest')
                     div.col#visContainer
-                        div#vis
+                        div#CO2BubbleVis CO2 Bubble Vis
                 div.top-margin#spacer
                 div.top-margin#spacer
                 div.row.top-margin.side-margins.justify-content-center.text-center
@@ -83,4 +83,3 @@ html(lang='en')
                                         div {{data.displayPropertyName}} {{data.propertyUnits}}: {{''.toString()}}
                                         div.lead(id='{{data.displayElementID}}')
                                         br
-        script(src='js/bubble_chart.js')

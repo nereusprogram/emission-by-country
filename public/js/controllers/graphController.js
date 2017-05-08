@@ -32,6 +32,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     self.dbData = res;
   });
 
+  // deals with jiggling from table size changing as countUp happens
   self.fixedWidthOfTable = ($('#impactsHeader').width());
 
   self.updateSelectedCountry = function(newCountry){
@@ -43,13 +44,19 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     smoothScrollService.scrollTo('selectedCountryInfo');
 
     $('#impactsTable').fadeIn();
+    $('#CO2BubbleVis').fadeOut(400, clearAndFadeBackIn);
+    function clearAndFadeBackIn() {
+      $('#CO2BubbleVis').empty();
+      $('#CO2BubbleVis').fadeIn();
+      CO2BubbleChart('#CO2BubbleVis');
+    }
     $('.fixed-width').width(self.fixedWidthOfTable);
 
   };
 
+  // not used
   self.d3OnClick = function(item){
     console.log('d3OnClick Triggered');
-    // TODO-chantelle: replace with bubble functionality
   };
 
   function searchForCountryInDatabase() {
@@ -135,5 +142,105 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       .replace(/^./, function(str){ return str.toUpperCase(); })
       //space after number 2 in CO2
       .split('2').join('2 ')
+  }
+
+  function CO2BubbleChart(chartElementID) {
+    var myBubbleChart = renderBubbleChart();
+
+    d3.csv('data/gates_money.csv', display);
+
+    function display(error, data) {
+      if (error) {
+        console.log(error);
+      }
+      myBubbleChart(chartElementID, data);
+    }
+
+    function renderBubbleChart() {
+
+      var height = ($(chartElementID).height() > 500) ? $(chartElementID).height() : 500;
+      var width = ($(chartElementID).width() > 200) ? $(chartElementID).width() : self.fixedWidthOfTable;
+      var center = { x: width/2, y: height / 2 };
+
+      var damper = 0.102;
+      var svg = null;
+      var bubbles = null;
+      var nodes = [];
+      var force = d3.layout.force()
+        .size([width, height])
+        .charge(charge)
+        .gravity(-0.01)
+        .friction(0.9);
+      var radiusScale = d3.scale.pow()
+        .exponent(0.5)
+        .range([2, 85]);
+
+      var chart = function chart(selector, rawData) {
+        // max divided by 5 to make bubble look biger on screen
+        radiusScale.domain([0, self.maxValueForEachProperty[1].propertyValue/5]);
+        nodes = createNodes(rawData);
+        force.nodes(nodes);
+        svg = d3.select(selector)
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height);
+        bubbles = svg.selectAll('.bubble')
+          .data(nodes, function (d) { return d.id; });
+        bubbles.enter().append('circle')
+          .classed('bubble', true)
+          .attr('r', 0)
+          .attr('fill', '#00CE3D')
+          .attr('stroke', '#00A132')
+          .attr('stroke-width', 2);
+        bubbles.transition()
+          .duration(2000)
+          .attr('r', function (d) { return d.radius; });
+        groupBubbles();
+      };
+
+
+      function groupBubbles() {
+
+        force.on('tick', function (e) {
+          bubbles.each(moveToCenter(e.alpha))
+            .attr('cx', function (d) { return d.x; })
+            .attr('cy', function (d) { return d.y; });
+        });
+
+        force.start();
+      }
+
+      function moveToCenter(alpha) {
+        return function (d) {
+          d.x = d.x + (center.x - d.x) * damper * alpha;
+          d.y = d.y + (center.y - d.y) * damper * alpha;
+        };
+      }
+
+      function charge(d) {
+        return -Math.pow(d.radius, 2.0) / 8;
+      }
+
+      function createNodes(rawData) {
+        var myNodes = rawData.map(function (d) {
+          return {
+            id: d.id,
+            radius: radiusScale(+self.matchingDataFromDB[0].actualValue),
+            // the actualValue of CO2 emission per capita
+            value: self.matchingDataFromDB[0].actualValue,
+            name: d.grant_title,
+            org: d.organization,
+            x: Math.random() * 900,
+            y: Math.random() * 800
+          };
+        });
+
+        return myNodes;
+      }
+
+      return chart;
+
+    }
+
   }
 }
