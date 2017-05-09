@@ -75,10 +75,11 @@ function highChartDirective() {
 
   function getAllCountries() {
     return [
-      {
-        "hc-key": "fo",
-        "value": 0
-      },
+      /*william doesn't have data for this country
+       {
+       "hc-key": "fo",
+       "value": 0
+       },*/
       {
         "hc-key": "us",
         "value": 1
@@ -155,10 +156,10 @@ function highChartDirective() {
         "hc-key": "dk",
         "value": 19
       },/*william doesn't have data for greenland
-      {
-        "hc-key": "gl",
-        "value": 20
-      }, */
+       {
+       "hc-key": "gl",
+       "value": 20
+       }, */
       {
         "hc-key": "pr",
         "value": 21
@@ -338,15 +339,15 @@ function highChartDirective() {
       {
         "hc-key": "km",
         "value": 65
-      },
-      {
-        "hc-key": "va",
-        "value": 66
-      },
-      {
-        "hc-key": "sm",
-        "value": 67
-      },
+      },/* william's data doesn't have these countries
+       {
+       "hc-key": "va",
+       "value": 66
+       },
+       {
+       "hc-key": "sm",
+       "value": 67
+       },*/
       {
         "hc-key": "am",
         "value": 68
@@ -535,10 +536,10 @@ function highChartDirective() {
         "hc-key": "zm",
         "value": 114
       }, /* William's dataset doesnt include northern cyprus
-      {
-        "hc-key": "nc",
-        "value": 115
-      }, */
+       {
+       "hc-key": "nc",
+       "value": 115
+       }, */
       {
         "hc-key": "za",
         "value": 116
@@ -574,11 +575,11 @@ function highChartDirective() {
       {
         "hc-key": "sy",
         "value": 124
-      },
-      {
-        "hc-key": "mc",
-        "value": 125
-      },
+      }, /* william's data doesn't have this country
+       {
+       "hc-key": "mc",
+       "value": 125
+       }, */
       {
         "hc-key": "al",
         "value": 126
@@ -588,10 +589,10 @@ function highChartDirective() {
         "value": 127
       },
       /* William's dataset doesnt include
-      {
-        "hc-key": "cnm",
-        "value": 128
-      }, */
+       {
+       "hc-key": "cnm",
+       "value": 128
+       }, */
       {
         "hc-key": "mn",
         "value": 129
@@ -619,10 +620,6 @@ function highChartDirective() {
       {
         "hc-key": "rs",
         "value": 135
-      },
-      {
-        "hc-key": "me",
-        "value": 136
       },
       {
         "hc-key": "bj",
@@ -661,10 +658,6 @@ function highChartDirective() {
         "value": 145
       },
       {
-        "hc-key": "li",
-        "value": 146
-      },
-      {
         "hc-key": "at",
         "value": 147
       },
@@ -683,10 +676,6 @@ function highChartDirective() {
       {
         "hc-key": "lu",
         "value": 151
-      },
-      {
-        "hc-key": "ad",
-        "value": 152
       },
       {
         "hc-key": "ci",
@@ -796,10 +785,10 @@ function highChartDirective() {
         "hc-key": "bf",
         "value": 179
       },/* doesn't exist in William's data
-      {
-        "hc-key": "ss",
-        "value": 180
-      },*/
+       {
+       "hc-key": "ss",
+       "value": 180
+       },*/
       {
         "hc-key": "na",
         "value": 181
