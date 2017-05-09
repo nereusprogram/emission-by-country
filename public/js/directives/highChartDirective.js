@@ -31,7 +31,7 @@ function highChartDirective() {
       mapNavigation: {
         enabled: true,
         buttonOptions: {
-          align:'right',
+          align:'left',
           verticalAlign: 'bottom'
         }
       },
