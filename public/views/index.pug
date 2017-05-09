@@ -65,7 +65,9 @@ html(lang='en')
 
                 div.row.top-margin.side-margins.justify-content-center.text-center
                     div.col.top-margin.justify-content-center
-                        div#visContainer.pink-back Per Capita CO₂ Emission in Metric Tons:
+                        div#visContainer.pink-back
+                            div {{graphCtrl.matchingDataFromDB[0].displayPropertyName}} {{graphCtrl.matchingDataFromDB[0].propertyUnits}}
+                            div.lead#CO2ImpactNum
                             div#CO2BubbleVis.orange-back
                     div.hidden-md-up.w-100
                     div.col.top-margin.justify-content-center#impactsHeader
@@ -78,3 +80,24 @@ html(lang='en')
                                         div {{data.displayPropertyName}} {{data.propertyUnits}}: {{''.toString()}}
                                         div.lead(id='{{data.displayElementID}}')
                                         br
+                div.row.top-margin.side-margins.justify-content-center.text-center
+                    div.col.top-margin.justify-content-center
+                        // pH and acidity
+                        div {{graphCtrl.matchingDataFromDB[6].displayPropertyName}} {{graphCtrl.matchingDataFromDB[6].propertyUnits}}
+                        div.lead#acidImpactNum
+                        div#acidVis(ng-include='graphCtrl.acidInclude')
+                    div.col.top-margin.justify-content-center
+                        // species turnover
+                        div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}} {{graphCtrl.matchingDataFromDB[8].propertyUnits}}
+                        div.lead#turnoverImpactNum
+                        div#turnoverVis(ng-include='graphCtrl.turnoverInclude')
+                    div.col.top-margin.justify-content-center
+                        // sea surface deoxygenation
+                        div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}} {{graphCtrl.matchingDataFromDB[5].propertyUnits}}
+                        div.lead#oxyImpactNum
+                        div#oxyVis(ng-include='graphCtrl.oxyInclude')
+                    div.col.top-margin.justify-content-center
+                        // species turnover
+                        div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}} {{graphCtrl.matchingDataFromDB[4].propertyUnits}}
+                        div.lead#warmingImpactNum
+                        div#warmingVis(ng-include='graphCtrl.warmingInclude')

@@ -27,6 +27,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     {"propertyName":"speciesTurnover","propertyValue":25.43261495},
     {"propertyName":"decreaseInBodySize","propertyValue":-31.86972656}
   ];
+  self.acidInclude = '';
 
 
   CountriesByName.get().then(function (res) {
@@ -116,7 +117,36 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     // in this case, it calls impactsCount()
     impactsCount();
 
+    updatePanels();
+
   } // searchForCountryInDatabase
+
+  function updatePanels() {
+    // takes end value to count to, takes id of DOM element
+    impactCount(parseFloat(self.matchingDataFromDB[0].displayActualValue.slice(0,7)), "CO2ImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[6].displayActualValue.slice(0,7)), "acidImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[8].displayActualValue.slice(0,7)), "turnoverImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[4].displayActualValue.slice(0,7)), "warmingImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[5].displayActualValue.slice(0,7)), "oxyImpactNum");
+    self.acidInclude = 'data/acid3.svg';
+    self.turnoverInclude = 'data/turnover3.svg';
+    self.warmingInclude = 'data/temp3.svg';
+    self.oxyInclude = 'data/oxy3.svg';
+  }
+
+  function impactCount(endVal, eID){
+    var options = {
+      useEasing : true,
+      useGrouping : false,
+      separator : ',',
+      decimal : '.'
+    };
+
+    var startValue = 0;
+    var endValue = endVal;
+    var numAnimate = new CountUp(eID, startValue.toFixed(decimalPlaces(endValue)), endValue, decimalPlaces(endValue), 1.5, options);
+    numAnimate.start();
+  }
   
   function impactsCount() {
     var options = {
