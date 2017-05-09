@@ -6,7 +6,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
   var self = this;
 
   // self.tagline = 'graph has loaded';
-  self.selectedCountry = 'Select a country';
+  self.selectedCountry = 'unselected';
+  self.selectedCountryDisplay = '_______';
   self.dbData = [];
   // world average calculated from world population data from worldometers.info,
   // worldometers.info pulled data from UN 2015 report
@@ -37,20 +38,29 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   self.updateSelectedCountry = function(newCountry){
 
+    $('#selectedCountryName').fadeOut(200, waitForPrettyAnimation);
+
+
     self.selectedCountry = newCountry;
+
     $scope.$apply();
     searchForCountryInDatabase();
-
     smoothScrollService.scrollTo('selectedCountryInfo');
 
     $('#impactsTable').fadeIn();
     $('#CO2BubbleVis').fadeOut(400, clearAndFadeBackIn);
+    $('.fixed-width').width(self.fixedWidthOfTable);
+
     function clearAndFadeBackIn() {
       $('#CO2BubbleVis').empty();
       $('#CO2BubbleVis').fadeIn();
       CO2BubbleChart('#CO2BubbleVis');
     }
-    $('.fixed-width').width(self.fixedWidthOfTable);
+    function waitForPrettyAnimation(){
+      self.selectedCountryDisplay = newCountry;
+      $scope.$apply();
+      $('#selectedCountryName').fadeIn();
+    }
 
   };
 

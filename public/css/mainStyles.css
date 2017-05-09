@@ -10,6 +10,14 @@ high-chart-directive {
     overflow: hidden;
 }
 
+.pink-back {
+    background-color: deeppink;
+}
+
+.orange-back {
+    background-color: orange;
+}
+
 #contentWrapper {
     max-width: 100%;
 }
