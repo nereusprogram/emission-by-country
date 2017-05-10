@@ -44,7 +44,7 @@ function highChartDirective() {
         name: ' ',
         states: {
           hover: {
-            color: '#4BB16C'
+            color: '#e6b86a'
           }
         },
         dataLabels: {
@@ -62,12 +62,12 @@ function highChartDirective() {
         }
       },
       chart: {
-        backgroundColor: '#12344E',
+        backgroundColor: '#FFFFFF',
         margin: 0
       },
       colorAxis: {
         dataClasses:[{
-          color: '#089436'
+          color: '#d6ac5a'
         }]
       }
     };
