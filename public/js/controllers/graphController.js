@@ -157,7 +157,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
     relevantFileName = 'data/'.concat(panelPrefix.concat(graphicState.toString().concat('.png')));
 
-    console.log(relevantFileName);
     return relevantFileName;
   }
 

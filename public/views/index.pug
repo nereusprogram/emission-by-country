@@ -55,7 +55,7 @@ html(lang='en')
             div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
                 button.btn.btn-custom#toTop(ng-click='mainCtrl.backToTop()') Back to Top
                 div.row.side-margins.top-margin
-                    high-chart-directive.col-xs-12(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', data='mainCtrl.testtest')
+                    high-chart-directive.col-xs-12(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', emission-data='mainCtrl.testtest')
                 div.top-margin#selectedCountryInfo
                 div.top-margin#spacer
                 div.lead.justify-content-center.text-center What if everyone on earth lived like the average person from
@@ -63,7 +63,7 @@ html(lang='en')
                     strong {{graphCtrl.selectedCountryDisplay}} ?
                 div.lead.justify-content-center.text-center What would be the effects on our oceans?
 
-                table.table-responsive.top-margin.side-margins.justify-content-center
+                table.mytable.table-responsive.top-margin.side-margins.justify-content-center
                     thead
                         tr
                             th
