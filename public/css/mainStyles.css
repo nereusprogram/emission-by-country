@@ -23,8 +23,8 @@ td {
 }
 
 .mytable>tbody>tr>td, .mytable>tbody>tr>th, .mytable>tfoot>tr>td, .mytable>tfoot>tr>th, .mytable>thead>tr>td, .mytable>thead>tr>th {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 70px;
+    padding-right: 70px;
     background-color: white;
 }
 
