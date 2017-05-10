@@ -67,8 +67,27 @@ function highChartDirective() {
       },
       colorAxis: {
         dataClasses:[{
-          color: '#d6ac5a'
-        }]
+          to: 3
+        }, {
+          from: 3,
+          to: 10
+        }, {
+          from: 10,
+          to: 30
+        }, {
+          from: 30,
+          to: 100
+        }, {
+          from: 100,
+          to: 300
+        }, {
+          from: 300,
+          to: 1000
+        }, {
+          from: 1000
+        }],
+        minColor: '#A2DCB4',
+        maxColor: '#002C0E'
       }
     };
   }
