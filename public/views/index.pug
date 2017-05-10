@@ -63,41 +63,66 @@ html(lang='en')
                     strong {{graphCtrl.selectedCountryDisplay}} ?
                 div.lead.justify-content-center.text-center What would be the effects on our oceans?
 
+                table.table-responsive.top-margin.side-margins.justify-content-center
+                    thead
+                        tr
+                            th
+                                div {{graphCtrl.matchingDataFromDB[0].displayPropertyName}} {{graphCtrl.matchingDataFromDB[0].propertyUnits}}
+                                div.lead#CO2ImpactNum
+                            th
+                                div {{graphCtrl.matchingDataFromDB[6].displayPropertyName}} {{graphCtrl.matchingDataFromDB[6].propertyUnits}}
+                                div.lead#acidImpactNum
+                            th
+                                div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}} {{graphCtrl.matchingDataFromDB[8].propertyUnits}}
+                                div.lead#turnoverImpactNum
+                            th
+                                div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}} {{graphCtrl.matchingDataFromDB[5].propertyUnits}}
+                                div.lead#oxyImpactNum
+                            th
+                                div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}} {{graphCtrl.matchingDataFromDB[4].propertyUnits}}
+                                div.lead#warmingImpactNum
+                            th
+                                div Where decrease in fish size will go
+                    tbody
+                        tr
+                            td#visContainer
+                                div#CO2BubbleVis
+                            td
+                                img#acidVis.wide-af(ng-src="{{graphCtrl.acidInclude}}")
+                            td
+                                img#turnoverVis.wide-af(ng-src="{{graphCtrl.turnoverInclude}}")
+
+                            td
+                                img#oxyVis.wide-af(ng-src='{{graphCtrl.oxyInclude}}')
+
+                            td
+                                img#warmingVis.wide-af(ng-src='{{graphCtrl.warmingInclude}}')
+                            td
+                                p spaceholder for decrease in fish size
+            //
                 div.row.top-margin.side-margins.justify-content-center.text-center
                     div.col.top-margin.justify-content-center
-                        div#visContainer.pink-back
+                        div#visContainer
                             div {{graphCtrl.matchingDataFromDB[0].displayPropertyName}} {{graphCtrl.matchingDataFromDB[0].propertyUnits}}
                             div.lead#CO2ImpactNum
-                            div#CO2BubbleVis.orange-back
-                    div.hidden-md-up.w-100
-                    div.col.top-margin.justify-content-center#impactsHeader
-                        h4
-                            strong Impacts of CO2 Emissions
-                        table#impactsTable.table-striped.top-margin
-                            tr(ng-repeat='data in graphCtrl.matchingDataFromDB')
-                                td
-                                    div.fixed-width
-                                        div {{data.displayPropertyName}} {{data.propertyUnits}}: {{''.toString()}}
-                                        div.lead(id='{{data.displayElementID}}')
-                                        br
-                div.row.top-margin.side-margins.justify-content-center.text-center
-                    div.col.top-margin.justify-content-center
+                            div#CO2BubbleVis
+                    div.col.top-margin.justify-content-center.panel-label
                         // pH and acidity
                         div {{graphCtrl.matchingDataFromDB[6].displayPropertyName}} {{graphCtrl.matchingDataFromDB[6].propertyUnits}}
                         div.lead#acidImpactNum
-                        div#acidVis(ng-include='graphCtrl.acidInclude')
-                    div.col.top-margin.justify-content-center
+                        img#acidVis.wide-af(ng-src="{{graphCtrl.acidInclude}}")
+                    div.col.top-margin.justify-content-center.panel-label
                         // species turnover
                         div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}} {{graphCtrl.matchingDataFromDB[8].propertyUnits}}
                         div.lead#turnoverImpactNum
-                        div#turnoverVis(ng-include='graphCtrl.turnoverInclude')
-                    div.col.top-margin.justify-content-center
+                        img#turnoverVis.wide-af(ng-src="{{graphCtrl.turnoverInclude}}")
+                    div.col.top-margin.justify-content-center.panel-label
                         // sea surface deoxygenation
                         div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}} {{graphCtrl.matchingDataFromDB[5].propertyUnits}}
                         div.lead#oxyImpactNum
-                        div#oxyVis(ng-include='graphCtrl.oxyInclude')
-                    div.col.top-margin.justify-content-center
+                        img#oxyVis.wide-af(ng-src='{{graphCtrl.oxyInclude}}')
+                    div.col.top-margin.justify-content-center.panel-label
                         // species turnover
                         div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}} {{graphCtrl.matchingDataFromDB[4].propertyUnits}}
                         div.lead#warmingImpactNum
-                        div#warmingVis(ng-include='graphCtrl.warmingInclude')
+                        img#warmingVis.wide-af(ng-src='{{graphCtrl.warmingInclude}}')

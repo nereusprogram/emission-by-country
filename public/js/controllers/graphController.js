@@ -27,7 +27,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     {"propertyName":"speciesTurnover","propertyValue":25.43261495},
     {"propertyName":"decreaseInBodySize","propertyValue":-31.86972656}
   ];
-  self.acidInclude = '';
 
 
   CountriesByName.get().then(function (res) {
@@ -39,7 +38,11 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   self.updateSelectedCountry = function(newCountry){
 
-    $('#selectedCountryName').fadeOut(200, waitForPrettyAnimation);
+    $('#selectedCountryName').fadeOut(200, function () {
+      self.selectedCountryDisplay = newCountry;
+      $scope.$apply();
+      $('#selectedCountryName').fadeIn();
+    });
 
 
     self.selectedCountry = newCountry;
@@ -49,19 +52,16 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     smoothScrollService.scrollTo('selectedCountryInfo');
 
     $('#impactsTable').fadeIn();
-    $('#CO2BubbleVis').fadeOut(400, clearAndFadeBackIn);
-    $('.fixed-width').width(self.fixedWidthOfTable);
-
-    function clearAndFadeBackIn() {
+    $('#CO2BubbleVis').fadeOut(400, function () {
       $('#CO2BubbleVis').empty();
       $('#CO2BubbleVis').fadeIn();
       CO2BubbleChart('#CO2BubbleVis');
-    }
-    function waitForPrettyAnimation(){
-      self.selectedCountryDisplay = newCountry;
-      $scope.$apply();
-      $('#selectedCountryName').fadeIn();
-    }
+    });
+    $('.fixed-width').width(self.fixedWidthOfTable);
+
+    $('table').fadeOut(200, function () {
+      $('table').fadeIn();
+    });
 
   };
 
@@ -113,9 +113,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     }
 
     $scope.$apply();
-    
-    // in this case, it calls impactsCount()
-    impactsCount();
 
     updatePanels();
 
@@ -128,10 +125,40 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     impactCount(parseFloat(self.matchingDataFromDB[8].displayActualValue.slice(0,7)), "turnoverImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[4].displayActualValue.slice(0,7)), "warmingImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[5].displayActualValue.slice(0,7)), "oxyImpactNum");
-    self.acidInclude = 'data/acid3.svg';
-    self.turnoverInclude = 'data/turnover3.svg';
-    self.warmingInclude = 'data/temp3.svg';
-    self.oxyInclude = 'data/oxy3.svg';
+
+    self.acidInclude = decideGraphic(self.matchingDataFromDB[6].displayActualValue,
+      self.maxValueForEachProperty[7].propertyValue, 'acid');
+    self.turnoverInclude = decideGraphic(self.matchingDataFromDB[8].displayActualValue,
+      self.maxValueForEachProperty[9].propertyValue, 'turnover');
+    self.warmingInclude = decideGraphic(self.matchingDataFromDB[4].displayActualValue,
+      self.maxValueForEachProperty[5].propertyValue, 'temp');
+    self.oxyInclude = decideGraphic(self.matchingDataFromDB[5].displayActualValue,
+      self.maxValueForEachProperty[6].propertyValue, 'oxy');
+
+
+  }
+
+  function decideGraphic(value, maxValue, panelPrefix) {
+    var percentOfMax = value/maxValue*100;
+    var graphicState = 5; // assume best case
+    var relevantFileName = '';
+
+    if (percentOfMax <= 20) {
+      graphicState = 5;
+    }else if (percentOfMax <= 40){
+      graphicState = 4;
+    }else if (percentOfMax <= 60){
+      graphicState = 3;
+    }else if(percentOfMax <=80){
+      graphicState = 2;
+    }else{
+      graphicState = 1;
+    }
+
+    relevantFileName = 'data/'.concat(panelPrefix.concat(graphicState.toString().concat('.png')));
+
+    console.log(relevantFileName);
+    return relevantFileName;
   }
 
   function impactCount(endVal, eID){
@@ -198,8 +225,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
     function renderBubbleChart() {
 
-      var height = ($(chartElementID).height() > 500) ? $(chartElementID).height() : 500;
-      var width = ($(chartElementID).width() < 500) ? $('#visContainer').width() : 500
+      var height = ($(chartElementID).height() < 500) ? $('#visContainer').width() : 500;
+      var width = ($(chartElementID).width() < 500) ? $('#visContainer').width() : 500;
       var center = { x: width/2, y: height / 2 };
 
       var damper = 0.102;
@@ -216,8 +243,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
         .range([2, 85]);
 
       var chart = function chart(selector, rawData) {
-        // max divided by 5 to make bubble look biger on screen
-        radiusScale.domain([0, self.maxValueForEachProperty[1].propertyValue/5]);
+        // max divided by 2 to make bubble look biger on screen
+        radiusScale.domain([0, self.maxValueForEachProperty[1].propertyValue/1.5]);
         nodes = createNodes(rawData);
         force.nodes(nodes);
         svg = d3.select(selector)

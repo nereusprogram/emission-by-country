@@ -1,6 +1,6 @@
 body {
-    background-color: #12344E;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #12344E;
     font-family: 'Montserrat', sans-serif;
     max-width: 100%;
 }
@@ -10,12 +10,22 @@ high-chart-directive {
     overflow: hidden;
 }
 
+th {
+    min-width: 16.6%;
+    max-width: 16.6%;
+    width: 16.6%;
+}
+
 .pink-back {
     background-color: deeppink;
 }
 
 .orange-back {
     background-color: orange;
+}
+
+.panel-label {
+    display: none;
 }
 
 #contentWrapper {
