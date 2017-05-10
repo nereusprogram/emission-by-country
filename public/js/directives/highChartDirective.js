@@ -6,7 +6,7 @@ function highChartDirective() {
     restrict: 'E',
     scope: {
       updateSelectedCountry: '&',
-      data: '='
+      emissionData: '='
     },
     link: function (scope, element) {
       var chart = Highcharts.mapChart(element[0], getMapOptions(mapClick));

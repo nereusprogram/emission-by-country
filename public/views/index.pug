@@ -75,14 +75,6 @@ html(lang='en')
                             th
                                 div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}} {{graphCtrl.matchingDataFromDB[8].propertyUnits}}
                                 div.lead#turnoverImpactNum
-                            th
-                                div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}} {{graphCtrl.matchingDataFromDB[5].propertyUnits}}
-                                div.lead#oxyImpactNum
-                            th
-                                div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}} {{graphCtrl.matchingDataFromDB[4].propertyUnits}}
-                                div.lead#warmingImpactNum
-                            th
-                                div Where decrease in fish size will go
                     tbody
                         tr
                             td#visContainer
@@ -91,7 +83,16 @@ html(lang='en')
                                 img#acidVis.wide-af(ng-src="{{graphCtrl.acidInclude}}")
                             td
                                 img#turnoverVis.wide-af(ng-src="{{graphCtrl.turnoverInclude}}")
-
+                        tr
+                            td
+                                div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}} {{graphCtrl.matchingDataFromDB[5].propertyUnits}}
+                                div.lead#oxyImpactNum
+                            td
+                                div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}} {{graphCtrl.matchingDataFromDB[4].propertyUnits}}
+                                div.lead#warmingImpactNum
+                            td
+                                div Where decrease in fish size will go
+                        tr
                             td
                                 img#oxyVis.wide-af(ng-src='{{graphCtrl.oxyInclude}}')
 

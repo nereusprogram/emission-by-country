@@ -11,10 +11,15 @@ high-chart-directive {
 }
 
 th {
-    min-width: 16.6%;
-    max-width: 16.6%;
-    width: 16.6%;
+    min-width: 33.3%;
+    max-width: 33.3%;
+    width: 33.3%;
     text-align: center;
+}
+
+td {
+    text-align: center;
+
 }
 
 .mytable>tbody>tr>td, .mytable>tbody>tr>th, .mytable>tfoot>tr>td, .mytable>tfoot>tr>th, .mytable>thead>tr>td, .mytable>thead>tr>th {
