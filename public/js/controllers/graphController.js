@@ -125,6 +125,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     impactCount(parseFloat(self.matchingDataFromDB[8].displayActualValue.slice(0,7)), "turnoverImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[4].displayActualValue.slice(0,7)), "warmingImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[5].displayActualValue.slice(0,7)), "oxyImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[7].displayActualValue.slice(0,7)), "potentialImpactNum");
 
     self.acidInclude = decideGraphic(self.matchingDataFromDB[6].displayActualValue,
       self.maxValueForEachProperty[7].propertyValue, 'acid');
@@ -134,6 +135,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       self.maxValueForEachProperty[5].propertyValue, 'temp');
     self.oxyInclude = decideGraphic(self.matchingDataFromDB[5].displayActualValue,
       self.maxValueForEachProperty[6].propertyValue, 'oxy');
+    self.potentialInclude = decideGraphic(self.matchingDataFromDB[7].displayActualValue,
+      self.maxValueForEachProperty[8].propertyValue, 'potential');
 
 
   }
@@ -172,25 +175,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     var endValue = endVal;
     var numAnimate = new CountUp(eID, startValue.toFixed(decimalPlaces(endValue)), endValue, decimalPlaces(endValue), 1.5, options);
     numAnimate.start();
-  }
-  
-  function impactsCount() {
-    var options = {
-      useEasing : true,
-      useGrouping : false,
-      separator : ',',
-      decimal : '.'
-    };
-
-    for(var c = 0; c < self.matchingDataFromDB.length; c++) {
-      var startValue =0;
-      var countToValue = parseFloat(self.matchingDataFromDB[c].displayActualValue.slice(0,7));
-      var numAnimate = new CountUp("impactsNum".concat(c.toString()), 
-        startValue.toFixed(decimalPlaces(countToValue)), countToValue, 
-        decimalPlaces(countToValue), 1.5, options);
-      numAnimate.start();
-    }
-
   }
 
   function decimalPlaces(value) {

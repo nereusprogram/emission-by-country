@@ -55,7 +55,7 @@ html(lang='en')
             div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
                 button.btn.btn-custom#toTop(ng-click='mainCtrl.backToTop()') Back to Top
                 div.row.side-margins.top-margin
-                    high-chart-directive.col-xs-12(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', emission-data='mainCtrl.testtest')
+                    high-chart-directive.col-xs-12(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', emission-data='mainCtrl.dbData', max-data='graphCtrl.maxValueForEachProperty')
                 div.top-margin#selectedCountryInfo
                 div.top-margin#spacer
                 div.lead.justify-content-center.text-center.em What if everyone on earth lived like the average person from
@@ -91,7 +91,8 @@ html(lang='en')
                                 div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}} {{graphCtrl.matchingDataFromDB[4].propertyUnits}}
                                 div.lead#warmingImpactNum
                             td
-                                div Where decrease in fish size will go
+                                div {{graphCtrl.matchingDataFromDB[7].displayPropertyName}} {{graphCtrl.matchingDataFromDB[7].propertyUnits}}
+                                div.lead#potentialImpactNum
                         tr
                             td
                                 img#oxyVis.wide-af(ng-src='{{graphCtrl.oxyInclude}}')
@@ -99,9 +100,8 @@ html(lang='en')
                             td
                                 img#warmingVis.wide-af(ng-src='{{graphCtrl.warmingInclude}}')
                             td
-                                p spaceholder for decrease in fish size
-            //
-                div.row.top-margin.side-margins.justify-content-center.text-center
+                                img#potentialVis.wide-af(ng-src='{{graphCtrl.potentialInclude}}')
+            //div.row.top-margin.side-margins.justify-content-center.text-center
                     div.col.top-margin.justify-content-center
                         div#visContainer
                             div {{graphCtrl.matchingDataFromDB[0].displayPropertyName}} {{graphCtrl.matchingDataFromDB[0].propertyUnits}}
