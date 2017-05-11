@@ -85,14 +85,23 @@ html(lang='en')
                                 img#turnoverVis.wide-af(ng-src="{{graphCtrl.turnoverInclude}}")
                         tr
                             td
-                                div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}} {{graphCtrl.matchingDataFromDB[5].propertyUnits}}
-                                div.lead#oxyImpactNum
+                                strong
+                                    br
+                                    br
+                                    div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}} {{graphCtrl.matchingDataFromDB[5].propertyUnits}}
+                                    div.lead#oxyImpactNum
                             td
-                                div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}} {{graphCtrl.matchingDataFromDB[4].propertyUnits}}
-                                div.lead#warmingImpactNum
+                                strong
+                                    br
+                                    br
+                                    div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}} {{graphCtrl.matchingDataFromDB[4].propertyUnits}}
+                                    div.lead#warmingImpactNum
                             td
-                                div {{graphCtrl.matchingDataFromDB[7].displayPropertyName}} {{graphCtrl.matchingDataFromDB[7].propertyUnits}}
-                                div.lead#potentialImpactNum
+                                strong
+                                    br
+                                    br
+                                    div {{graphCtrl.matchingDataFromDB[7].displayPropertyName}} {{graphCtrl.matchingDataFromDB[7].propertyUnits}}
+                                    div.lead#potentialImpactNum
                         tr
                             td
                                 img#oxyVis.wide-af(ng-src='{{graphCtrl.oxyInclude}}')
