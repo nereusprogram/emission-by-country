@@ -87,8 +87,8 @@ function highChartDirective() {
         }, {
           from: 1000
         }],
-        minColor: '#366735',
-        maxColor: '#f0ce6f'
+        minColor: '#00A132',
+        maxColor: '#F15046'
       }
     };
   }
