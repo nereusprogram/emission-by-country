@@ -28,12 +28,8 @@ td {
     background-color: white;
 }
 
-.pink-back {
-    background-color: deeppink;
-}
-
-.orange-back {
-    background-color: orange;
+.invisible-text {
+    color: #ffffff;
 }
 
 .panel-label {

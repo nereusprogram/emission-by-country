@@ -110,29 +110,8 @@ html(lang='en')
                                 img#warmingVis.wide-af(ng-src='{{graphCtrl.warmingInclude}}')
                             td
                                 img#potentialVis.wide-af(ng-src='{{graphCtrl.potentialInclude}}')
-            //div.row.top-margin.side-margins.justify-content-center.text-center
-                    div.col.top-margin.justify-content-center
-                        div#visContainer
-                            div {{graphCtrl.matchingDataFromDB[0].displayPropertyName}} {{graphCtrl.matchingDataFromDB[0].propertyUnits}}
-                            div.lead#CO2ImpactNum
-                            div#CO2BubbleVis
-                    div.col.top-margin.justify-content-center.panel-label
-                        // pH and acidity
-                        div {{graphCtrl.matchingDataFromDB[6].displayPropertyName}} {{graphCtrl.matchingDataFromDB[6].propertyUnits}}
-                        div.lead#acidImpactNum
-                        img#acidVis.wide-af(ng-src="{{graphCtrl.acidInclude}}")
-                    div.col.top-margin.justify-content-center.panel-label
-                        // species turnover
-                        div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}} {{graphCtrl.matchingDataFromDB[8].propertyUnits}}
-                        div.lead#turnoverImpactNum
-                        img#turnoverVis.wide-af(ng-src="{{graphCtrl.turnoverInclude}}")
-                    div.col.top-margin.justify-content-center.panel-label
-                        // sea surface deoxygenation
-                        div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}} {{graphCtrl.matchingDataFromDB[5].propertyUnits}}
-                        div.lead#oxyImpactNum
-                        img#oxyVis.wide-af(ng-src='{{graphCtrl.oxyInclude}}')
-                    div.col.top-margin.justify-content-center.panel-label
-                        // species turnover
-                        div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}} {{graphCtrl.matchingDataFromDB[4].propertyUnits}}
-                        div.lead#warmingImpactNum
-                        img#warmingVis.wide-af(ng-src='{{graphCtrl.warmingInclude}}')
+
+                div.row.justify-content-center
+                    div.col
+                        div
+                            small.invisible-text Produced By The Nereus Program, 2017.
