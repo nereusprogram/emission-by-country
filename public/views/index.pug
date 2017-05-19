@@ -58,10 +58,12 @@ html(lang='en')
                     high-chart-directive.col-xs-12(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', emission-data='mainCtrl.dbData', max-data='graphCtrl.maxValueForEachProperty')
                 div.top-margin#selectedCountryInfo
                 div.top-margin#spacer
-                div.lead.justify-content-center.text-center.em If everyone on earth lived like the average person from
+                div.lead.justify-content-center.text-center.em
+                    | What would be the effects on our oceans if everyone
+                    br
+                    | on earth lived like the average person from
                 h1.justify-content-center.text-center#selectedCountryName
                     strong {{graphCtrl.selectedCountryDisplay}}
-                div.lead.justify-content-center.text-center.em What would be the effects on our oceans?
 
                 table.mytable.table-responsive.top-margin.side-margins.justify-content-center
                     thead
