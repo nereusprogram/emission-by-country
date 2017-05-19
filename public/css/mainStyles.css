@@ -78,6 +78,27 @@ td {
     z-index: 999;
 }
 
+#backToAll {
+    margin: auto;
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    display: none;
+    z-index: 999;
+    color: #12344E !important;
+}
+#backButtonLink{
+    color: #12344E !important;
+}
+
+.btn-custom-back {
+    background-color: #f3ef21;
+}
+
+.btn-custom-back:hover, .btn-custom-back:focus, .btn-custom-back:active, .btn-custom-back.active {
+    background-color: #FFF88A;
+}
+
 #impactsTable {
     display: none;
     table-layout: fixed;

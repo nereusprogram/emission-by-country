@@ -56,6 +56,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       $('#CO2BubbleVis').empty();
       $('#CO2BubbleVis').fadeIn();
       CO2BubbleChart('#CO2BubbleVis');
+      $('#backToAll').fadeIn();
     });
     $('.fixed-width').width(self.fixedWidthOfTable);
 

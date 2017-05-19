@@ -112,8 +112,11 @@ html(lang='en')
                                 img#warmingVis.wide-af(ng-src='{{graphCtrl.warmingInclude}}')
                             td
                                 img#potentialVis.wide-af(ng-src='{{graphCtrl.potentialInclude}}')
-
-                div.row.justify-content-center
+                div.row
+                    div.col
+                        a#backButtonLink(href='http://34.209.207.58/')
+                            button.btn.btn-custom-back#backToAll Back to All Data Visualizations
+                div.row.text-center
                     div.col
                         div
                             small.invisible-text Produced By The Nereus Program, 2017.
