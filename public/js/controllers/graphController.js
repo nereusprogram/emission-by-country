@@ -36,7 +36,9 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
   // deals with jiggling from table size changing as countUp happens
   self.fixedWidthOfTable = ($('#impactsHeader').width());
 
-  self.updateSelectedCountry = function(newCountry){
+  $('#backToAll').fadeIn();
+
+    self.updateSelectedCountry = function(newCountry){
 
     $('#selectedCountryName').fadeOut(200, function () {
       self.selectedCountryDisplay = newCountry;
@@ -56,7 +58,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       $('#CO2BubbleVis').empty();
       $('#CO2BubbleVis').fadeIn();
       CO2BubbleChart('#CO2BubbleVis');
-      $('#backToAll').fadeIn();
     });
     $('.fixed-width').width(self.fixedWidthOfTable);
 
