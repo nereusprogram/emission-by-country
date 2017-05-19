@@ -39,13 +39,13 @@ function highChartDirective() {
       series: [{
         data: getAllCountries(),
         mapData: Highcharts.maps['custom/world-highres'],
-        nullColor: '#93A2AE',
-        borderColor: '#93A2AE',
+        nullColor: '#a1a19d',
+        borderColor: '#a1a19d',
         joinBy: 'hc-key',
         name: ' ',
         states: {
           hover: {
-            color: '#7BC492'
+            color: '#fff88a'
           }
         },
         dataLabels: {
@@ -66,30 +66,11 @@ function highChartDirective() {
         backgroundColor: '#FFFFFF',
         margin: 0
       },
-      colorAxis: {
-        dataClasses:[{
-          to: 3
-        }, {
-          from: 3,
-          to: 10
-        }, {
-          from: 10,
-          to: 30
-        }, {
-          from: 30,
-          to: 100
-        }, {
-          from: 100,
-          to: 300
-        }, {
-          from: 300,
-          to: 1000
-        }, {
-          from: 1000
-        }],
-        minColor: '#00A132',
-        maxColor: '#F15046'
-      }
+        colorAxis: {
+            min: 0,
+            minColor: '#00A132',
+            maxColor: '#ffffff'
+        }
     };
   }
 

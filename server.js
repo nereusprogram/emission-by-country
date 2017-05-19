@@ -8,7 +8,7 @@ var mysql          = require('mysql');
 // configuration ===========================================
 
 // set our port
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 
 // create connection to mySQL database
 var pool = mysql.createPool({

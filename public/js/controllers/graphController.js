@@ -7,7 +7,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   // self.tagline = 'graph has loaded';
   self.selectedCountry = 'unselected';
-  self.selectedCountryDisplay = '_______';
+  self.selectedCountryDisplay = '?';
   self.dbData = [];
   // world average calculated from world population data from worldometers.info,
   // worldometers.info pulled data from UN 2015 report
