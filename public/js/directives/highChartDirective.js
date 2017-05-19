@@ -12,9 +12,7 @@ function highChartDirective() {
     link: function (scope, element) {
       var chart = Highcharts.mapChart(element[0], getMapOptions(mapClick));
       // gets highmaps to redraw to size of container correctly
-      setTimeout(chart.reflow(), 100);
-      setTimeout(chart.legend.destroy(), 100);
-      /// this breaks everything setTimeout($(window).resize(), 100);
+      // setTimeout(chart.reflow(), 100);
 
       function mapClick(event) {
         scope.updateSelectedCountry({newCountry: event.point.name});
@@ -27,50 +25,44 @@ function highChartDirective() {
   function getMapOptions(callback) {
     return {
       title: {
-        text: ''
+        text: null
       },
       mapNavigation: {
         enabled: true,
         buttonOptions: {
-          align:'left',
           verticalAlign: 'bottom'
         }
+      },
+      colorAxis: {
+          min: 0,
+          minColor: '#00A132',
+          maxColor: '#ffffff'
+      },
+      plotOptions: {
+          series: {
+              events: {
+                  click: function (event) {
+                      callback(event);
+                  }
+              }
+          }
       },
       series: [{
         data: getAllCountries(),
         mapData: Highcharts.maps['custom/world-highres'],
         nullColor: '#a1a19d',
-        borderColor: '#a1a19d',
+        name: 'CO2 Emissions (megatons)',
         joinBy: 'hc-key',
-        name: ' ',
         states: {
           hover: {
             color: '#fff88a'
           }
-        },
-        dataLabels: {
-          enabled: false,
-          format: '{point.name}'
         }
       }],
-      plotOptions: {
-        series: {
-          events: {
-            click: function (event) {
-              callback(event);
-            }
-          }
-        }
-      },
       chart: {
         backgroundColor: '#FFFFFF',
         margin: 0
-      },
-        colorAxis: {
-            min: 0,
-            minColor: '#00A132',
-            maxColor: '#ffffff'
-        }
+      }
     };
   }
 
