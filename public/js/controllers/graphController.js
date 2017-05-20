@@ -14,7 +14,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
   self.matchingDataFromDBWorld = [{name: 'World average per capita CO2 emission (Tons)', propertyValue: 12.2*100/39.7362666248}];
   self.matchingDataFromDB = [];
   self.matchingDataFromDBForD3 = [];
-  self.maxValueForEachProperty = [
+  self.countryDataForHighmaps = [];
+    self.maxValueForEachProperty = [
     {"propertyName":"name","propertyValue": "Qatar"},
     {"propertyName":"perCapitaCO2Emission","propertyValue":39.7362666248},
     {"propertyName":"longTermCO2Emssion","propertyValue":2920405.8287741},
@@ -31,6 +32,10 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   CountriesByName.get().then(function (res) {
     self.dbData = res;
+    for(var i = 0; i < self.dbData.length; i++){
+      self.countryDataForHighmaps.push({name:self.dbData[i].name, value:self.dbData[i].perCapitaCO2Emission});
+    }
+    populateHighcharts(self.countryDataForHighmaps, self.updateSelectedCountry);
   });
 
   // deals with jiggling from table size changing as countUp happens
@@ -295,4 +300,53 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     }
 
   }
+
+  function populateHighcharts(dataFromDB, mapClick) {
+        var chart = Highcharts.mapChart('highmapsContainer', {
+            title: {
+                text: null
+            },
+
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+
+            colorAxis: {
+                min: 0,
+                minColor: '#00A132',
+                maxColor: '#ff8a07'
+            },
+
+            // must be declared before series for click event to fire
+            plotOptions:{
+                series:{
+                    point:{
+                        events:{
+                            click: function () {
+                                mapClick(this.name);
+                            }
+                        }
+                    }
+                }
+            },
+
+            series: [{
+                data: dataFromDB,
+                mapData: Highcharts.maps['custom/world'],
+                nullColor: '#a1a19d',
+                name: 'CO2 Emissions (megatons)',
+                joinBy: 'name',
+                states: {
+                    hover: {
+                        color: '#fff88a'
+                    }
+                }
+            }]
+        });
+        setTimeout(chart.reflow(), 100);
+    }
+
 }

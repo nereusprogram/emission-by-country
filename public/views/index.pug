@@ -28,6 +28,7 @@ html(lang='en')
         // highcharts for world map
         script(type='text/javascript', src='https://code.highcharts.com/maps/highmaps.js')
         script(type='text/javascript', src='https://code.highcharts.com/maps/modules/data.js')
+        script(src='http://code.highcharts.com/mapdata/custom/world.js')
         script(type='text/javascript', src='https://code.highcharts.com/mapdata/custom/world-highres.js')
 
         // load custom angular components
@@ -54,8 +55,8 @@ html(lang='en')
         div#main
             div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
                 button.btn.btn-custom#toTop(ng-click='mainCtrl.backToTop()') Back to Top
-                div.row.side-margins.top-margin
-                    high-chart-directive.col-xs-12(update-selected-country='graphCtrl.updateSelectedCountry(newCountry)', emission-data='mainCtrl.dbData', max-data='graphCtrl.maxValueForEachProperty')
+                div.row
+                    div.wide-af#highmapsContainer Placeholder for highmaps
                 div.top-margin#selectedCountryInfo
                 div.top-margin#spacer
                 div.lead.justify-content-center.text-center.em
