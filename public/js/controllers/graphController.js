@@ -43,7 +43,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   $('#backToAll').fadeIn();
 
-    self.updateSelectedCountry = function(newCountry){
+  self.updateSelectedCountry = function(newCountry){
 
     $('#selectedCountryName').fadeOut(200, function () {
       self.selectedCountryDisplay = newCountry;
@@ -72,11 +72,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   };
 
-  // not used
-  self.d3OnClick = function(item){
-    console.log('d3OnClick Triggered');
-  };
-
   function searchForCountryInDatabase() {
     for(var i = 0; i < self.dbData.length; i++){
       if(self.selectedCountry === self.dbData[i].name){
@@ -84,26 +79,36 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
         var propertyNames = Object.keys(self.dbData[i]);
         self.matchingDataFromDB = [];
         self.matchingDataFromDBForD3 = [];
-        var units = ['', ' in Metric Tons', ' in MegaTons', ' in MegaTons',
-          ' in °C', ' in °C', ' in mmol/metres cubes', '', ' in Metric Tons', ' in %', ' in %'];
+        var displayPropertyNames = [
+          '', // 0 ==> name
+          '', // 1 ==> short term CO2, not displayed
+          'Global Cumulative CO₂ Emission in 10 Years in Megatons',  // 2 ==> long term CO2, displayed
+          '', // 3 ==> not displayed
+          '', // 4 ==> not displayed
+          'Sea Surface Warming in °C', // 5 ==> sea surface warming, displayed
+          'Sea Surface Deoxygenation in mmol/metres³', // 6 ==> sea surface deoxygenation, displayed
+          'Change in Sea Surface pH', // 7 ==> change in sea surface pH, displayed
+          'Decrease in Max Catch Potential in Metric Tons', // 8 ==> decreae in max catch potential, displayed
+          'Change in Species Turnover in %' // 9 ==> species turnover, displayed
+        ];
         // a = 1 avoids name of country being stored in the selected country object being
         // passed to the d3Directive
         for(var a = 1; a < propertyNames.length; a++) {
 
           self.matchingDataFromDB.push({
             propertyName: propertyNames[a],
-            displayPropertyName: camelCaseToNormal(propertyNames[a]),
+            displayPropertyName: displayPropertyNames[a],
             actualValue: self.dbData[i][propertyNames[a]],
             displayActualValue: self.dbData[i][propertyNames[a]].toString(),
             displayElementID: 'impactsNum'.concat((a-1).toString()),
 
             // if propertyValue is negative, return the positive scaled version of the value
             propertyValue: (self.dbData[i][propertyNames[a]] * 100 / self.maxValueForEachProperty[a].propertyValue),
-            propertyUnits: units[a]
           });
 
         }
 
+        // format data for D3 draw circle graph
         for(var b = 0; b < self.matchingDataFromDB.length; b++) {
           // indecies of the 3 data points I want to graph
           if(b === 0 || b === 8 || b === 9){
@@ -127,7 +132,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   function updatePanels() {
     // takes end value to count to, takes id of DOM element
-    impactCount(parseFloat(self.matchingDataFromDB[0].displayActualValue.slice(0,7)), "CO2ImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[1].displayActualValue.slice(0,7)), "CO2ImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[6].displayActualValue.slice(0,7)), "acidImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[8].displayActualValue.slice(0,7)), "turnoverImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[4].displayActualValue.slice(0,7)), "warmingImpactNum");
@@ -303,6 +308,9 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   function populateHighcharts(dataFromDB, mapClick) {
         var chart = Highcharts.mapChart('highmapsContainer', {
+            chart: {
+              height: '40%'
+            },
             title: {
                 text: null
             },
@@ -315,9 +323,14 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
             },
 
             colorAxis: {
+                type: 'linear',
+                stops: [
+                    [0, '#00A132'],
+                    [0.1, '#9E9317'],
+                    [1, '#ff8a07']
+                ],
                 min: 0,
-                minColor: '#00A132',
-                maxColor: '#ff8a07'
+                max: 40
             },
 
             // must be declared before series for click event to fire
@@ -333,18 +346,41 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
                 }
             },
 
+            tooltip: {
+                formatter: function () {
+                    return this.series.name + '<br><b>'
+                         + this.point.name + ':' + '</b><br><b>'
+                         + this.point.value.toFixed(2)+ '</b>';
+                }
+            },
+
             series: [{
                 data: dataFromDB,
                 mapData: Highcharts.maps['custom/world'],
                 nullColor: '#a1a19d',
-                name: 'CO2 Emissions (megatons)',
+                name: '<p style="text-align:center">Per capita CO₂ emission<br>(metric tons per person per year)</p>',
                 joinBy: 'name',
                 states: {
                     hover: {
                         color: '#fff88a'
                     }
                 }
-            }]
+            }],
+
+            credits: {
+                position: {
+                    align: 'center'
+                },
+                text: 'Data for shaded countries not available.',
+                href: null
+
+            },
+
+            legend: {
+              title: {
+                text: 'Per capita CO2 emission <br>(metric tons per person per year)'
+              }
+            }
         });
         setTimeout(chart.reflow(), 100);
     }
