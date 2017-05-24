@@ -101,6 +101,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
             propertyName: propertyNames[a],
             displayPropertyName: displayPropertyNames[a],
             actualValue: self.dbData[i][propertyNames[a]],
+            //todo-chantelle: turns out I can just do sig figs with .toPrecision(), so displayAcutalValue isn't needed
             displayActualValue: self.dbData[i][propertyNames[a]].toString(),
             displayElementID: 'impactsNum'.concat((a-1).toString()),
 
@@ -136,12 +137,12 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   function updatePanels(triggeredFromHighmaps) {
     // takes end value to count to, takes id of DOM element
-    impactCount(parseFloat(self.matchingDataFromDB[1].displayActualValue.slice(0,7)), "CO2ImpactNum");
-    impactCount(parseFloat(self.matchingDataFromDB[6].displayActualValue.slice(0,7)), "acidImpactNum");
-    impactCount(parseFloat(self.matchingDataFromDB[8].displayActualValue.slice(0,7)), "turnoverImpactNum");
-    impactCount(parseFloat(self.matchingDataFromDB[4].displayActualValue.slice(0,7)), "warmingImpactNum");
-    impactCount(parseFloat(self.matchingDataFromDB[5].displayActualValue.slice(0,7)), "oxyImpactNum");
-    impactCount(parseFloat(self.matchingDataFromDB[7].displayActualValue.slice(0,7)), "potentialImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[1].actualValue.toPrecision(3)), "CO2ImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[6].actualValue.toPrecision(3)), "acidImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[8].actualValue.toPrecision(3)), "turnoverImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[4].actualValue.toPrecision(3)), "warmingImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[5].actualValue.toPrecision(3)), "oxyImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[7].actualValue.toPrecision(3)), "potentialImpactNum");
 
     self.acidInclude = decideGraphic(self.matchingDataFromDB[6].displayActualValue,
       self.maxValueForEachProperty[7].propertyValue, 'acid');
