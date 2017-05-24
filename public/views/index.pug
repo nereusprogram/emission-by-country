@@ -54,6 +54,11 @@ html(lang='en')
         div#main
             div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
                 button.btn.btn-custom#toTop(ng-click='mainCtrl.backToTop()') Back to Top
+                div.dropdown#dropdownContainer
+                    button.btn.btn-custom.dropdown-toggle#listCountrySelectButton(data-toggle='dropdown') Select Country From List
+                        span.caret
+                    ul.dropdown-menu.scrollable-menu
+                        li(ng-repeat='country in mainCtrl.countryNames', ng-click='graphCtrl.updateSelectedCountry(country.name, false)') {{country.name}}
                 div.row
                     div.container.wide-af
                         div#highmapsContainer Placeholder for highmaps

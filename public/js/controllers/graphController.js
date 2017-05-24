@@ -43,7 +43,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   $('#backToAll').fadeIn();
 
-  self.updateSelectedCountry = function(newCountry){
+  self.updateSelectedCountry = function(newCountry, triggeredFromHighmaps){
 
     $('#selectedCountryName').fadeOut(200, function () {
       self.selectedCountryDisplay = newCountry;
@@ -54,8 +54,10 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
     self.selectedCountry = newCountry;
 
-    $scope.$apply();
-    searchForCountryInDatabase();
+    if(triggeredFromHighmaps){
+      $scope.$apply();
+    }
+    searchForCountryInDatabase(triggeredFromHighmaps);
     smoothScrollService.scrollTo('selectedCountryInfo');
 
     $('#impactsTable').fadeIn();
@@ -72,7 +74,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   };
 
-  function searchForCountryInDatabase() {
+  function searchForCountryInDatabase(triggeredFromHighmaps) {
     for(var i = 0; i < self.dbData.length; i++){
       if(self.selectedCountry === self.dbData[i].name){
 
@@ -124,13 +126,15 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       }
     }
 
-    $scope.$apply();
+    if(triggeredFromHighmaps){
+      $scope.$apply();
+    }
 
-    updatePanels();
+    updatePanels(triggeredFromHighmaps);
 
   } // searchForCountryInDatabase
 
-  function updatePanels() {
+  function updatePanels(triggeredFromHighmaps) {
     // takes end value to count to, takes id of DOM element
     impactCount(parseFloat(self.matchingDataFromDB[1].displayActualValue.slice(0,7)), "CO2ImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[6].displayActualValue.slice(0,7)), "acidImpactNum");
@@ -149,7 +153,10 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       self.maxValueForEachProperty[6].propertyValue, 'oxy');
     self.potentialInclude = decideGraphic(self.matchingDataFromDB[7].displayActualValue,
       self.maxValueForEachProperty[8].propertyValue, 'potential');
-    $scope.$apply();
+
+    if(triggeredFromHighmaps){
+      $scope.$apply();
+    }
 
   }
 
@@ -338,7 +345,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
                     point:{
                         events:{
                             click: function () {
-                                mapClick(this.name);
+                                // true denotes that it has been triggered from highmaps (needs manual scope update)
+                                mapClick(this.name, true);
                             }
                         }
                     }

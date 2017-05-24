@@ -78,6 +78,31 @@ td {
     z-index: 999;
 }
 
+#dropdownContainer {
+    margin: auto;
+    position: fixed;
+    top: 2%;
+    right: 2%;
+    display: block;
+    z-index: 999;
+
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 300px;
+    overflow-x: hidden;
+    color: #12344E !important;
+}
+
+.scrollable-menu li:hover {
+    cursor: pointer;
+}
+
+.dropdown-menu > li:nth-child(odd) {
+    background-color: #fbfbfb;
+}
+
 #backToAll {
     margin: auto;
     position: fixed;
