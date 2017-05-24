@@ -79,15 +79,29 @@ html(lang='en')
                 table.mytable.table-responsive.top-margin.side-margins.justify-content-center
                     thead
                         tr
-                            th
+                            th.chantelle-tooltip
                                 div {{graphCtrl.matchingDataFromDB[1].displayPropertyName}}
                                 div.lead#CO2ImpactNum
-                            th
+                                span.chantelle-tooltiptext-top
+                                    | This is calculated by multiplying the per capita CO2 emission of the selected country
+                                    | to the world population. The result is then multiplied for 10 years.
+                            th.chantelle-tooltip
                                 div {{graphCtrl.matchingDataFromDB[7].displayPropertyName}}
                                 div.lead#potentialImpactNum
-                            th
+                                span.chantelle-tooltiptext-top
+                                    | Maximum catch potential is a proxy of Maximum Sustainable Yield. Changes in
+                                    | maximum catch potential is calculated from the changes in projected global total
+                                    | maximum catch potential relative to 1950-1969 under the global warming scenario
+                                    | with respect to the cumulative CO2 emission. The projections are based on a dynamic
+                                    | bioclimate envelope model (see Cheung et al. 2016).
+                            th.chantelle-tooltip
                                 div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}}
                                 div.lead#turnoverImpactNum
+                                span.chantelle-tooltiptext-top
+                                    | Species turnover is calculated from the sum of projected global average number of
+                                    | species gains and losses, relative to the initial  species richness in 1950-1969
+                                    | under the global warming scenario with respect to the cumulative CO2 emission.
+                                    | The projections are based on a dynamic bioclimate envelope model (see Cheung et al. 2016).
                     tbody
                         tr
                             td#visContainer
@@ -98,23 +112,36 @@ html(lang='en')
                                 img#turnoverVis.wide-af(ng-src="{{graphCtrl.turnoverInclude}}")
                         tr
                             td
-                                strong
+                                strong.chantelle-tooltip
                                     br
                                     br
                                     div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}}
                                     div.lead#oxyImpactNum
+                                    span.chantelle-tooltiptext-bottom
+                                        | Calculated from the difference in projected global average sea surface oxygen
+                                        | concentration relative to the 1950-1969 level under the global warming scenario
+                                        | with respect to the cumulative CO2 emission. The projection is based on global
+                                        | Earth System Model outputs (see Cheung et al. 2016).
                             td
-                                strong
+                                strong.chantelle-tooltip
                                     br
                                     br
                                     div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}}
                                     div.lead#warmingImpactNum
+                                    span.chantelle-tooltiptext-bottom
+                                        | Calculated from the difference in projected global average sea surface
+                                        | temperature relative to the 1950-1969 level under the global warming scenario
+                                        | with respect to the cumulative CO2 emission. The projection is based on global
+                                        | Earth System Model outputs (see Cheung et al. 2016).
                             td
-                                strong
+                                strong.chantelle-tooltip
                                     br
                                     br
                                     div {{graphCtrl.matchingDataFromDB[6].displayPropertyName}}
                                     div.lead#acidImpactNum
+                                    span.chantelle-tooltiptext-bottom
+                                        | Changes in sea surface pH relative to the average level between 1950-1969.
+                                        | Each unit decrease in pH represents a tenfold increase in acidity.
                         tr
                             td
                                 img#oxyVis.wide-af(ng-src='{{graphCtrl.oxyInclude}}')
