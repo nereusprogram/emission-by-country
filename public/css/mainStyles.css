@@ -115,47 +115,26 @@ td {
     overflow: visible;
 }
 
-.chantelle-tooltip .chantelle-tooltiptext-top {
+.chantelle-tooltip .chantelle-tooltiptext {
     position: absolute;
-    right: auto;
-    min-width: 200px;
+    top: 0;
+    right: 0;
+    height: 100%;
     visibility: hidden;
     background-color: #484848;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 8px 8px;
     z-index: 1;
+    overflow: visible;
 
     /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
     opacity: 0;
     transition: opacity 1s;
 }
 
-.chantelle-tooltip .chantelle-tooltiptext-bottom {
-    position: absolute;
-    right: auto;
-    bottom: 0;
-    min-width: 200px;
-    visibility: hidden;
-    background-color: #484848;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    z-index: 1;
-
-    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-.chantelle-tooltip:hover .chantelle-tooltiptext-top {
-    visibility: visible;
-    opacity: 0.9;
-}
-
-.chantelle-tooltip:hover .chantelle-tooltiptext-bottom {
+.chantelle-tooltip:hover .chantelle-tooltiptext{
     visibility: visible;
     opacity: 0.9;
 }

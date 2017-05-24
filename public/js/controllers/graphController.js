@@ -326,11 +326,10 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
                 type: 'linear',
                 stops: [
                     [0, '#00A132'],
-                    [0.1, '#9E9317'],
-                    [1, '#ff8a07']
+                    [1, '#ff2f03']
                 ],
                 min: 0,
-                max: 40
+                max: 12
             },
 
             // must be declared before series for click event to fire
