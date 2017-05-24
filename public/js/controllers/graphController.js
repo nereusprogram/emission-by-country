@@ -149,7 +149,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       self.maxValueForEachProperty[6].propertyValue, 'oxy');
     self.potentialInclude = decideGraphic(self.matchingDataFromDB[7].displayActualValue,
       self.maxValueForEachProperty[8].propertyValue, 'potential');
-
+    $scope.$apply();
 
   }
 
