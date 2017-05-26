@@ -116,12 +116,12 @@ td {
     color: #12344E !important;
 }
 
-.btn-custom-back {
-    background-color: #f3ef21;
+.btn-custom-grey {
+    background-color: #cecbcc;
 }
 
-.btn-custom-back:hover, .btn-custom-back:focus, .btn-custom-back:active, .btn-custom-back.active {
-    background-color: #FFF88A;
+.btn-custom-grey:hover, .btn-custom-grey:focus, .btn-custom-grey:active, .btn-custom-grey.active {
+    background-color: #b4b1b2;
 }
 
 #impactsTable {

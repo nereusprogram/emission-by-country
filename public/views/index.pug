@@ -55,7 +55,7 @@ html(lang='en')
             div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
                 button.btn.btn-custom#toTop(ng-click='mainCtrl.backToTop()') Back to Top
                 div.dropdown#dropdownContainer
-                    button.btn.btn-custom.dropdown-toggle#listCountrySelectButton(data-toggle='dropdown') Select Country
+                    button.btn.btn-custom-grey.dropdown-toggle#listCountrySelectButton(data-toggle='dropdown') Select Country
                         span.caret
                     ul.dropdown-menu.scrollable-menu
                         li(ng-repeat='country in mainCtrl.countryNames', ng-click='graphCtrl.updateSelectedCountry(country.name, false)') {{country.name}}
@@ -151,7 +151,7 @@ html(lang='en')
                 div.row
                     div.col
                         a#backButtonLink(href='http://34.209.207.58/')
-                            button.btn.btn-custom-back#backToAll &#9664; Home
+                            button.btn.btn-custom-grey#backToAll &#9664; Home
                 div.row.text-center
                     div.col
                         div
