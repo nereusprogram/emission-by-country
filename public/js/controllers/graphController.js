@@ -259,8 +259,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
         bubbles.enter().append('circle')
           .classed('bubble', true)
           .attr('r', 0)
-          .attr('fill', '#00CE3D')
-          .attr('stroke', '#00A132')
+          .attr('fill', '#cecbcc')
+          .attr('stroke', '#979790')
           .attr('stroke-width', 2);
         bubbles.transition()
           .duration(2000)
