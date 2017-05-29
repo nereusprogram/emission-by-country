@@ -60,7 +60,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     searchForCountryInDatabase(triggeredFromHighmaps);
     smoothScrollService.scrollTo('selectedCountryInfo');
 
-    $('#impactsTable').fadeIn();
+    $('.impacts-table').fadeIn();
     $('#CO2BubbleVis').fadeOut(400, function () {
       $('#CO2BubbleVis').empty();
       $('#CO2BubbleVis').fadeIn();
@@ -91,10 +91,12 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
           'Sea Surface Deoxygenation in mmol/metres³', // 6 ==> sea surface deoxygenation, displayed
           'Change in Sea Surface pH', // 7 ==> change in sea surface pH, displayed
           'Decrease in Max Catch Potential in Metric Tons', // 8 ==> decreae in max catch potential, displayed
-          'Change in Species Turnover in %' // 9 ==> species turnover, displayed
+          'Change in Species Turnover in %', // 9 ==> species turnover, displayed
+          'Decrease in Fish Body Size in %' // 9 ==> decreaseInBodySize, displayed
         ];
         // a = 1 avoids name of country being stored in the selected country object being
         // passed to the d3Directive
+
         for(var a = 1; a < propertyNames.length; a++) {
 
           self.matchingDataFromDB.push({
@@ -143,17 +145,22 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
     impactCount(parseFloat(self.matchingDataFromDB[4].actualValue.toPrecision(3)), "warmingImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[5].actualValue.toPrecision(3)), "oxyImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[7].actualValue.toPrecision(3)), "potentialImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[9].actualValue.toPrecision(3)), "bodyImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[9].actualValue.toPrecision(3)), "testImpactNum");
 
-    self.acidInclude = decideGraphic(self.matchingDataFromDB[6].displayActualValue,
+    self.acidInclude = decideGraphic(self.matchingDataFromDB[6].actualValue,
       self.maxValueForEachProperty[7].propertyValue, 'acid');
-    self.turnoverInclude = decideGraphic(self.matchingDataFromDB[8].displayActualValue,
+    self.turnoverInclude = decideGraphic(self.matchingDataFromDB[8].actualValue,
       self.maxValueForEachProperty[9].propertyValue, 'turnover');
-    self.warmingInclude = decideGraphic(self.matchingDataFromDB[4].displayActualValue,
+    self.warmingInclude = decideGraphic(self.matchingDataFromDB[4].actualValue,
       self.maxValueForEachProperty[5].propertyValue, 'temp');
-    self.oxyInclude = decideGraphic(self.matchingDataFromDB[5].displayActualValue,
+    self.oxyInclude = decideGraphic(self.matchingDataFromDB[5].actualValue,
       self.maxValueForEachProperty[6].propertyValue, 'oxy');
-    self.potentialInclude = decideGraphic(self.matchingDataFromDB[7].displayActualValue,
+    self.potentialInclude = decideGraphic(self.matchingDataFromDB[7].actualValue,
       self.maxValueForEachProperty[8].propertyValue, 'potential');
+    // TODO-chantelle: rename potential*.png to body*.png when I get the right size fishing nets from lindsay
+    self.bodyInclude = decideGraphic(self.matchingDataFromDB[9].actualValue,
+      self.maxValueForEachProperty[10].propertyValue, 'potential');
 
     if(triggeredFromHighmaps){
       $scope.$apply();

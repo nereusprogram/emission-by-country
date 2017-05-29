@@ -117,14 +117,14 @@ td {
 }
 
 .btn-custom-grey {
-    background-color: #cecbcc;
+    background-color: #e8e5e6;
 }
 
 .btn-custom-grey:hover, .btn-custom-grey:focus, .btn-custom-grey:active, .btn-custom-grey.active {
-    background-color: #b4b1b2;
+    background-color: #cecbcc;
 }
 
-#impactsTable {
+.impacts-table {
     display: none;
     table-layout: fixed;
     overflow: hidden;
