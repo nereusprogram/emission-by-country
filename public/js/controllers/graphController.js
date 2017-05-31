@@ -139,14 +139,14 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
 
   function updatePanels(triggeredFromHighmaps) {
     // takes end value to count to, takes id of DOM element
-    impactCount(parseFloat(self.matchingDataFromDB[1].actualValue.toPrecision(3)), "CO2ImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[1].actualValue.toPrecision(3)), "longTermCO2ImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[6].actualValue.toPrecision(3)), "acidImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[8].actualValue.toPrecision(3)), "turnoverImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[4].actualValue.toPrecision(3)), "warmingImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[5].actualValue.toPrecision(3)), "oxyImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[7].actualValue.toPrecision(3)), "potentialImpactNum");
     impactCount(parseFloat(self.matchingDataFromDB[9].actualValue.toPrecision(3)), "bodyImpactNum");
-    impactCount(parseFloat(self.matchingDataFromDB[9].actualValue.toPrecision(3)), "testImpactNum");
+    impactCount(parseFloat(self.matchingDataFromDB[1].actualValue.toPrecision(3)), "testImpactNum");
 
     self.acidInclude = decideGraphic(self.matchingDataFromDB[6].actualValue,
       self.maxValueForEachProperty[7].propertyValue, 'acid');
@@ -160,12 +160,22 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
       self.maxValueForEachProperty[8].propertyValue, 'potential');
     // TODO-chantelle: rename potential*.png to body*.png when I get the right size fishing nets from lindsay
     self.bodyInclude = decideGraphic(self.matchingDataFromDB[9].actualValue,
-      self.maxValueForEachProperty[10].propertyValue, 'potential');
+      self.maxValueForEachProperty[10].propertyValue, 'body');
+    
+    self.CO2BubbleSize = decideCO2BubbleSize(self.matchingDataFromDB[1].actualValue, self.maxValueForEachProperty[2].propertyValue);
 
     if(triggeredFromHighmaps){
       $scope.$apply();
     }
 
+  }
+  
+  function decideCO2BubbleSize(value, maxValue) {
+      var percentSize = (value/maxValue*100)+30;
+      if (percentSize > 100){
+          percentSize = 100;
+      }
+      return percentSize.toString().concat('%');
   }
 
   function decideGraphic(value, maxValue, panelPrefix) {
@@ -207,18 +217,6 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
   function decimalPlaces(value) {
     if(Math.floor(value) === value) return 0;
     return value.toString().split(".")[1].length || 0;
-  }
-
-  function camelCaseToNormal (str){
-    return str
-      // insert a space between lower & upper
-      .replace(/([a-z])([A-Z])/g, '$1 $2')
-      // space before last upper in a sequence followed by lower
-      .replace(/\b([A-Z]+)([A-Z])([a-z])/, '$1 $2$3')
-      // uppercase the first character
-      .replace(/^./, function(str){ return str.toUpperCase(); })
-      //space after number 2 in CO2
-      .split('2').join('2 ')
   }
 
   function CO2BubbleChart(chartElementID) {

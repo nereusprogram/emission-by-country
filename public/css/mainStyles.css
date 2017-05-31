@@ -5,11 +5,6 @@ body {
     max-width: 100%;
 }
 
-high-chart-directive {
-    width: 100%;
-    overflow: hidden;
-}
-
 th {
     min-width: 33.3%;
     max-width: 33.3%;
@@ -28,10 +23,6 @@ td {
     background-color: white;
 }
 
-.invisible-text {
-    color: #ffffff;
-}
-
 .panel-label {
     display: none;
 }
@@ -41,16 +32,7 @@ td {
 }
 
 .bottom-margin {
-    margin-bottom: 40px;
-}
-
-.top-margin {
-    margin-top: 20px;
-}
-
-.side-margins {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-bottom: 6vh;
 }
 
 .wide-af {
@@ -152,7 +134,8 @@ td {
     border-radius: 6px;
     padding: 8px 8px;
     z-index: 1;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: scroll;
 
     /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
     opacity: 0;
@@ -162,4 +145,18 @@ td {
 .chantelle-tooltip:hover .chantelle-tooltiptext{
     visibility: visible;
     opacity: 0.9;
+}
+
+.circle-container {
+    width: 100%;
+    height: 100%;
+}
+.circle-base {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-color: #979790;
+    border: 4px solid #cecbcc;
+    vertical-align: middle;
+    margin: auto;
 }

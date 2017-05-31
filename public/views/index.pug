@@ -71,103 +71,106 @@ html(lang='en')
                                 |
                                 a(href='http://edgar.jrc.ec.europe.eu') http://edgar.jrc.ec.europe.eu
                                 | , 2016
-                div.top-margin#selectedCountryInfo
-                div.top-margin#spacer
-                div.lead.justify-content-center.text-center.em
-                    | What would be the effects on our oceans if everyone
-                    br
-                    | on earth lived like the average person from
-                    h1#selectedCountryName
-                        strong {{graphCtrl.selectedCountryDisplay}}
-                    | for 10 years?
-
-                table.impacts-table.mytable.table-responsive.top-margin.side-margins.justify-content-center
-                    thead
-                        tr
-                            th
-                                div {{graphCtrl.matchingDataFromDB[1].displayPropertyName}}
-                                div.lead#CO2ImpactNum
-                            th
-                                div {{graphCtrl.matchingDataFromDB[7].displayPropertyName}}
-                                div.lead#potentialImpactNum
-                            th
-                                div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}}
-                                div.lead#turnoverImpactNum
-                            th
-                                div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}}
-                                div.lead#testImpactNum
-                    tbody
-                        tr
-                            td#visContainer.chantelle-tooltip
-                                div#CO2BubbleVis
-                                span.chantelle-tooltiptext
-                                    | This is calculated by multiplying the per capita CO2 emission of the selected country
-                                    | to the world population. The result is then multiplied for 10 years.
-                            td.chantelle-tooltip
-                                img#potentialVis.wide-af(ng-src='{{graphCtrl.potentialInclude}}')
-                                span.chantelle-tooltiptext
-                                    | Maximum catch potential is a proxy of Maximum Sustainable Yield. Changes in
-                                    | maximum catch potential is calculated from the changes in projected global total
-                                    | maximum catch potential relative to 1950-1969 under the global warming scenario
-                                    | with respect to the cumulative CO2 emission. The projections are based on a dynamic
-                                    | bioclimate envelope model (see Cheung et al. 2016).
-                            td.chantelle-tooltip
-                                img#turnoverVis.wide-af(ng-src="{{graphCtrl.turnoverInclude}}")
-                                span.chantelle-tooltiptext
-                                    | Species turnover is calculated from the sum of projected global average number of
-                                    | species gains and losses, relative to the initial  species richness in 1950-1969
-                                    | under the global warming scenario with respect to the cumulative CO2 emission.
-                                    | The projections are based on a dynamic bioclimate envelope model (see Cheung et al. 2016).
-                            // TODO-chantelle: remove after showing lindsay layout
-                            td.chantelle-tooltip
-                                img#testVis.wide-af(ng-src="{{graphCtrl.turnoverInclude}}")
-                                span.chantelle-tooltiptext
-                                    | Species turnover is calculated from the sum of projected global average number of
-                                    | species gains and losses, relative to the initial  species richness in 1950-1969
-                                    | under the global warming scenario with respect to the cumulative CO2 emission.
-                                    | The projections are based on a dynamic bioclimate envelope model (see Cheung et al. 2016).
-                table.impacts-table.mytable.table-responsive.top-margin.side-margins.justify-content-center
-                    thead
-                        tr
-                            th
-                                div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}}
-                                div.lead#oxyImpactNum
-                            th
-                                div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}}
-                                div.lead#warmingImpactNum
-                            th
-                                div {{graphCtrl.matchingDataFromDB[6].displayPropertyName}}
-                                div.lead#acidImpactNum
-                            th
-                                div {{graphCtrl.matchingDataFromDB[9].displayPropertyName}}
-                                div.lead#bodyImpactNum
-                    tbody
-                        tr
-                            td.chantelle-tooltip
-                                img#oxyVis.wide-af(ng-src='{{graphCtrl.oxyInclude}}')
-                                span.chantelle-tooltiptext
-                                    | Calculated from the difference in projected global average sea surface oxygen
-                                    | concentration relative to the 1950-1969 level under the global warming scenario
-                                    | with respect to the cumulative CO2 emission. The projection is based on global
-                                    | Earth System Model outputs (see Cheung et al. 2016).
-                            td.chantelle-tooltip
-                                img#warmingVis.wide-af(ng-src='{{graphCtrl.warmingInclude}}')
-                                span.chantelle-tooltiptext
-                                    | Calculated from the difference in projected global average sea surface
-                                    | temperature relative to the 1950-1969 level under the global warming scenario
-                                    | with respect to the cumulative CO2 emission. The projection is based on global
-                                    | Earth System Model outputs (see Cheung et al. 2016).
-                            td.chantelle-tooltip
-                                img#acidVis.wide-af(ng-src="{{graphCtrl.acidInclude}}")
-                                span.chantelle-tooltiptext
-                                    | Changes in sea surface pH relative to the average level between 1950-1969.
-                                    | Each unit decrease in pH represents a tenfold increase in acidity.
-                            td.chantelle-tooltip
-                                img#bodyVis.wide-af(ng-src="{{graphCtrl.bodyInclude}}")
-                                span.chantelle-tooltiptext
-                                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus neque odio,
-                                    | rutrum molestie purus fermentum vitae. Fusce tempor tortor ac est pharetra ornare.
-                                    | Cras interdum turpis magna, vitae tristique lorem molestie vel.
+                div.row#selectedCountryInfo
+                    div.col.lead.text-center.bottom-margin
+                        br
+                        | What would be the effects on our oceans if everyone
+                        br
+                        | on earth lived like the average person from
+                        h1#selectedCountryName
+                            strong {{graphCtrl.selectedCountryDisplay}}
+                        | for 10 years?
+                div.row
+                    div.col
+                        table.impacts-table.mytable.table-responsive.justify-content-center.bottom-margin
+                            thead
+                                tr
+                                    th
+                                        div {{graphCtrl.matchingDataFromDB[1].displayPropertyName}}
+                                        div.lead#longTermCO2ImpactNum
+                                    th
+                                        div {{graphCtrl.matchingDataFromDB[7].displayPropertyName}}
+                                        div.lead#potentialImpactNum
+                                    th
+                                        div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}}
+                                        div.lead#turnoverImpactNum
+                                    th
+                                        div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}}
+                                        div.lead#testImpactNum
+                            tbody
+                                tr
+                                    td#visContainer.chantelle-tooltip
+                                        div#CO2BubbleVis
+                                        span.chantelle-tooltiptext
+                                            | This is calculated by multiplying the per capita CO2 emission of the selected country
+                                            | to the world population. The result is then multiplied for 10 years.
+                                    td.chantelle-tooltip
+                                        img#potentialVis.wide-af(ng-src='{{graphCtrl.potentialInclude}}')
+                                        span.chantelle-tooltiptext
+                                            | Maximum catch potential is a proxy of Maximum Sustainable Yield. Changes in
+                                            | maximum catch potential is calculated from the changes in projected global total
+                                            | maximum catch potential relative to 1950-1969 under the global warming scenario
+                                            | with respect to the cumulative CO2 emission. The projections are based on a dynamic
+                                            | bioclimate envelope model (see Cheung et al. 2016).
+                                    td.chantelle-tooltip
+                                        img#turnoverVis.wide-af(ng-src="{{graphCtrl.turnoverInclude}}")
+                                        span.chantelle-tooltiptext
+                                            | Species turnover is calculated from the sum of projected global average number of
+                                            | species gains and losses, relative to the initial  species richness in 1950-1969
+                                            | under the global warming scenario with respect to the cumulative CO2 emission.
+                                            | The projections are based on a dynamic bioclimate envelope model (see Cheung et al. 2016).
+                                    // TODO-chantelle: remove after showing lindsay layout
+                                    td.chantelle-tooltip.circle-container
+                                        div.circle-base(ng-style="{'height':graphCtrl.CO2BubbleSize, 'width':graphCtrl.CO2BubbleSize}")
+                                        span.chantelle-tooltiptext
+                                            | Species turnover is calculated from the sum of projected global average number of
+                                            | species gains and losses, relative to the initial  species richness in 1950-1969
+                                            | under the global warming scenario with respect to the cumulative CO2 emission.
+                                            | The projections are based on a dynamic bioclimate envelope model (see Cheung et al. 2016).
+                div.row
+                    div.col
+                        table.impacts-table.mytable.table-responsive.justify-content-center
+                            thead
+                                tr
+                                    th
+                                        div {{graphCtrl.matchingDataFromDB[5].displayPropertyName}}
+                                        div.lead#oxyImpactNum
+                                    th
+                                        div {{graphCtrl.matchingDataFromDB[4].displayPropertyName}}
+                                        div.lead#warmingImpactNum
+                                    th
+                                        div {{graphCtrl.matchingDataFromDB[6].displayPropertyName}}
+                                        div.lead#acidImpactNum
+                                    th
+                                        div {{graphCtrl.matchingDataFromDB[9].displayPropertyName}}
+                                        div.lead#bodyImpactNum
+                            tbody
+                                tr
+                                    td.chantelle-tooltip
+                                        img#oxyVis.wide-af(ng-src='{{graphCtrl.oxyInclude}}')
+                                        span.chantelle-tooltiptext
+                                            | Calculated from the difference in projected global average sea surface oxygen
+                                            | concentration relative to the 1950-1969 level under the global warming scenario
+                                            | with respect to the cumulative CO2 emission. The projection is based on global
+                                            | Earth System Model outputs (see Cheung et al. 2016).
+                                    td.chantelle-tooltip
+                                        img#warmingVis.wide-af(ng-src='{{graphCtrl.warmingInclude}}')
+                                        span.chantelle-tooltiptext
+                                            | Calculated from the difference in projected global average sea surface
+                                            | temperature relative to the 1950-1969 level under the global warming scenario
+                                            | with respect to the cumulative CO2 emission. The projection is based on global
+                                            | Earth System Model outputs (see Cheung et al. 2016).
+                                    td.chantelle-tooltip
+                                        img#acidVis.wide-af(ng-src="{{graphCtrl.acidInclude}}")
+                                        span.chantelle-tooltiptext
+                                            | Changes in sea surface pH relative to the average level between 1950-1969.
+                                            | Each unit decrease in pH represents a tenfold increase in acidity.
+                                    td.chantelle-tooltip
+                                        img#bodyVis.wide-af(ng-src="{{graphCtrl.bodyInclude}}")
+                                        span.chantelle-tooltiptext
+                                            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus neque odio,
+                                            | rutrum molestie purus fermentum vitae. Fusce tempor tortor ac est pharetra ornare.
+                                            | Cras interdum turpis magna, vitae tristique lorem molestie vel.
                 div.row
                     div.col
                         a#backButtonLink(href='http://34.209.207.58/')
