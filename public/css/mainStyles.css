@@ -135,7 +135,7 @@ td {
     padding: 8px 8px;
     z-index: 1;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
     opacity: 0;
