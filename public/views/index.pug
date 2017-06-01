@@ -45,9 +45,6 @@ html(lang='en')
         // load CountUp.js
         script(src='http://inorganik.github.io/countUp.js/countUp.js')
 
-        // load bubble chart
-        script(src='https://rawgit.com/vlandham/bubble_chart/gh-pages/lib/d3.js')
-
 
 
     body#top.ng-cloak(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
@@ -82,7 +79,7 @@ html(lang='en')
                         | for 10 years?
                 div.row
                     div.col
-                        table.impacts-table.mytable.table-responsive.justify-content-center.bottom-margin
+                        table.impacts-table.table-responsive.justify-content-center.bottom-margin.top-table
                             thead
                                 tr
                                     th
@@ -94,13 +91,10 @@ html(lang='en')
                                     th
                                         div {{graphCtrl.matchingDataFromDB[8].displayPropertyName}}
                                         div.lead#turnoverImpactNum
-                                    th
-                                        div {{graphCtrl.matchingDataFromDB[1].displayPropertyName}}
-                                        div.lead#testImpactNum
                             tbody
                                 tr
-                                    td#visContainer.chantelle-tooltip
-                                        div#CO2BubbleVis
+                                    td.chantelle-tooltip.circle-container
+                                        div.circle-base(ng-style="{'height':graphCtrl.CO2BubbleSize, 'width':graphCtrl.CO2BubbleSize}")
                                         span.chantelle-tooltiptext
                                             | This is calculated by multiplying the per capita CO2 emission of the selected country
                                             | to the world population. The result is then multiplied for 10 years.
@@ -119,17 +113,9 @@ html(lang='en')
                                             | species gains and losses, relative to the initial  species richness in 1950-1969
                                             | under the global warming scenario with respect to the cumulative CO2 emission.
                                             | The projections are based on a dynamic bioclimate envelope model (see Cheung et al. 2016).
-                                    // TODO-chantelle: remove after showing lindsay layout
-                                    td.chantelle-tooltip.circle-container
-                                        div.circle-base(ng-style="{'height':graphCtrl.CO2BubbleSize, 'width':graphCtrl.CO2BubbleSize}")
-                                        span.chantelle-tooltiptext
-                                            | Species turnover is calculated from the sum of projected global average number of
-                                            | species gains and losses, relative to the initial  species richness in 1950-1969
-                                            | under the global warming scenario with respect to the cumulative CO2 emission.
-                                            | The projections are based on a dynamic bioclimate envelope model (see Cheung et al. 2016).
                 div.row
                     div.col
-                        table.impacts-table.mytable.table-responsive.justify-content-center
+                        table.impacts-table.table-responsive.justify-content-center
                             thead
                                 tr
                                     th
