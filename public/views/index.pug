@@ -45,8 +45,6 @@ html(lang='en')
         // load CountUp.js
         script(src='http://inorganik.github.io/countUp.js/countUp.js')
 
-
-
     body#top.ng-cloak(ng-app='emissionByCountry', ng-controller='MainController as mainCtrl')
         div#main
             div#contentWrapper.container-fluid(ng-controller='GraphController as graphCtrl')
@@ -154,9 +152,10 @@ html(lang='en')
                                     td.chantelle-tooltip
                                         img#bodyVis.wide-af(ng-src="{{graphCtrl.bodyInclude}}")
                                         span.chantelle-tooltiptext
-                                            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus neque odio,
-                                            | rutrum molestie purus fermentum vitae. Fusce tempor tortor ac est pharetra ornare.
-                                            | Cras interdum turpis magna, vitae tristique lorem molestie vel.
+                                            | This is the projected median decrease in maximum body weight of marine fishes
+                                            | under the selected global warming scenario across exploited marine fishes in
+                                            | the world. This is projected based on the methodology described in
+                                            | Cheung et al. (2013).
                 div.row
                     div.col
                         a#backButtonLink(href='http://34.209.207.58/')
