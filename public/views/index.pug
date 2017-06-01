@@ -9,38 +9,39 @@ html(lang='en')
         // nereus favicon
         link(rel='shortcut icon', href='favicon.ico')
 
+        // SCRIPT TAGS NEED data-cfasync='false' TO WORK WITH CLOUDFLARE ROCKET LOADER
         // jQuery
-        script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+        script(data-cfasync='false', src='https://code.jquery.com/jquery-3.1.1.min.js')
 
         // bootstrap
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js' integrity='sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb' crossorigin='anonymous')
-        script(src='bootstrap/js/bootstrap.js')
+        script(data-cfasync='false', src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js' integrity='sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb' crossorigin='anonymous')
+        script(data-cfasync='false', src='bootstrap/js/bootstrap.js')
         link(rel='stylesheet', href='bootstrap/css/bootstrap.css')
 
         link(rel='stylesheet', href='css/mainStyles.css')
         link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet')
 
         // load angular
-        script(src='libs/angular/angular.js')
-        script(src='libs/angular-route/angular-route.js')
-        script(src='libs/angular-animate/angular-animate.js')
+        script(data-cfasync='false', src='libs/angular/angular.js')
+        script(data-cfasync='false', src='libs/angular-route/angular-route.js')
+        script(data-cfasync='false', src='libs/angular-animate/angular-animate.js')
 
         // highcharts for world map
-        script(type='text/javascript', src='https://code.highcharts.com/maps/highmaps.js')
-        script(type='text/javascript', src='https://code.highcharts.com/maps/modules/data.js')
-        script(src='http://code.highcharts.com/mapdata/custom/world.js')
-        script(type='text/javascript', src='https://code.highcharts.com/mapdata/custom/world-highres.js')
+        script(data-cfasync='false', type='text/javascript', src='https://code.highcharts.com/maps/highmaps.js')
+        script(data-cfasync='false', type='text/javascript', src='https://code.highcharts.com/maps/modules/data.js')
+        script(data-cfasync='false', src='http://code.highcharts.com/mapdata/custom/world.js')
+        script(data-cfasync='false', type='text/javascript', src='https://code.highcharts.com/mapdata/custom/world-highres.js')
 
         // load custom angular components
-        script(src='js/app.js')
-        script(src='js/angularRoutes.js')
-        script(src='js/services/CountryService.js')
-        script(src='js/services/CountriesByName.js')
-        script(src='js/services/smoothScrollService.js')
-        script(src='js/services/d3Service.js')
-        script(src='js/controllers/mainController.js')
-        script(src='js/controllers/graphController.js')
-        script(src='js/directives/d3Directive.js')
+        script(data-cfasync='false', src='js/app.js')
+        script(data-cfasync='false', src='js/angularRoutes.js')
+        script(data-cfasync='false', src='js/services/CountryService.js')
+        script(data-cfasync='false', src='js/services/CountriesByName.js')
+        script(data-cfasync='false', src='js/services/smoothScrollService.js')
+        script(data-cfasync='false', src='js/services/d3Service.js')
+        script(data-cfasync='false', src='js/controllers/mainController.js')
+        script(data-cfasync='false', src='js/controllers/graphController.js')
+        script(data-cfasync='false', src='js/directives/d3Directive.js')
 
         // load CountUp.js
         script(src='http://inorganik.github.io/countUp.js/countUp.js')
@@ -177,6 +178,6 @@ html(lang='en')
                                 a(href='http://www.nereusprogram.org/')
                                     img.logos(src='data/nereusLogo.jpg')
                             div.midpadding
-                            div.logo
+                            div.logo.bottom-margin
                                 a(href='http://www.nippon-foundation.or.jp/en/')
                                     img.logos(src='data/nipponLogo.jpg')
