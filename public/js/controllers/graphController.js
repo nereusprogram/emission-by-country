@@ -264,7 +264,7 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
                 data: dataFromDB,
                 mapData: Highcharts.maps['custom/world'],
                 nullColor: '#a1a19d',
-                name: '<p style="text-align:center">Per capita CO₂ emission<br>(metric tons per person per year)</p>',
+                name: '<div>Per capita CO₂ emission (metric tons per person per year)</div>',
                 joinBy: 'name',
                 states: {
                     hover: {
