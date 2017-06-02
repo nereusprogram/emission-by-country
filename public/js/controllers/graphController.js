@@ -232,7 +232,8 @@ function GraphController($scope, $location, smoothScrollService, CountriesByName
                 type: 'linear',
                 stops: [
                     [0, '#00A132'],
-                    [1, '#ff2f03']
+                    [0.5, '#e3d229'],
+                    [1, '#a00000']
                 ],
                 min: 0,
                 max: 12
