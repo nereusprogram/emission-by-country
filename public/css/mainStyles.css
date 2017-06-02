@@ -100,12 +100,12 @@ td {
 
 .btn-custom {
     color: #ffffff;
-    background-color: #00A132;
+    background-color: #f15046;
 }
 
 .btn-custom:hover, .btn-custom:focus, .btn-custom:active, .btn-custom.active {
     color: #ffffff;
-    background-color: #01C13E;
+    background-color: #FF5549;
 }
 
 .btn-custom-grey {
