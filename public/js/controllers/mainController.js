@@ -18,9 +18,9 @@ function MainController (CountriesByName, smoothScrollService) {
   $(window).scroll(function() {
     if ($(window).scrollTop() > 10) {
       $('#toTop').fadeIn();
-      $('#dropdownContainer').fadeOut(200);
+      $('#dropdownContainer').fadeOut(100);
     } else {
-      $('#toTop').fadeOut(200);
+      $('#toTop').fadeOut(100);
       $('#dropdownContainer').fadeIn();
     }
   });
