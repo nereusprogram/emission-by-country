@@ -8,12 +8,12 @@ var mysql          = require('mysql');
 // configuration ===========================================
 
 // set our port
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3003;
 
 // create connection to mySQL database
 var pool = mysql.createPool({
   connectionLimit: 10,
-  host : '52.39.193.109',
+  host : '35.167.85.111',
   user : 'angular_service_account',
   password: 'papaya',
   database: 'emission_by_country_schema'
