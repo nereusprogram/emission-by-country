@@ -9,11 +9,11 @@ Then `npm install bower.`
 Then run `npm install` and `bower install`.
 Then `npm start` runs the app.
 
-### Note for Nereus
+### Notes for Nereus
 
 This web app, along with all the web apps I developed for the United Nations Ocean Conference 2017 runs on an AWS instance with IP address 35.167.85.111. Each app runs on a different port. This one runs at http://35.167.85.111:3003.
 
-The mySQL server that this web app pulls data from also runs at 35.167.85.111. It contains two schemas: international-treaties and emission-by-country. See the Nereus Program github (username nereusprogram) for root account access to the mySQL server. Access account credentials for each app are available in `./server.js`. 
+The mySQL server that this web app pulls data from also runs at 35.167.85.111. It contains two schemas: international-treaties and emission-by-country. Contact me (username chantellechan1 on GitHub) for root account access to the mySQL server. I have a google drive document with relevant info for you. Access account credentials for each app are available in `./server.js`. 
 
 When moving this app to a different instance, the port that it runs on can be changed in `./server.js`. Note that you will need to also update the emissions by country link in the view of the landing page app, available at https://github.com/chantellechan1/nereus-data-vis-landing-page. Either fork the repo or contact me to change it.
 
