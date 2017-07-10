@@ -1,10 +1,13 @@
 # emission-by-country
-What if everyone in the world emitted CO2 like the average person of different countries?
+
+What if everyone in the world emitted CO2 like the average person of different countries? This web app compares per capita emissions data for different countries.
 
 ## Setup
+
 Install node and npm if they've not already been installed.
 Then `npm install bower.`
-Then, clone the repo and run `npm install` and `bower install`.
+Then run `npm install` and `bower install`.
+Then `npm start` runs the app.
 
 ###MySQL Info
 If access denied on connect, try changing
@@ -21,9 +24,13 @@ to restart mysql server.
 
 Check `/var/log/mysql` to double check mySQL logs to see that restart has indeed occured.
 
-### Troubleshooting Running Prod
+### Troubleshooting
 If difficulty running on port 80: 
 <pre><code>
 sudo apt-get install libcap2-bin
 sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
 </code></pre>
+
+### Note for Nereus
+
+This web app, along with all the web apps I developed for the United Nations Ocean Conference 2017 runs on an AWS instance with IP address 35.167.85.111. Each app runs on a different port. This one runs at http://35.167.85.111:3003.
